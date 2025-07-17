@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>國立臺中科技大學資訊管理系</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .link-bar {
+      margin-bottom: 10px;
+      text-align: right;
+    }
+
+    .link-bar a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-area img {
+      height: 60px;
+      width: auto;
+    }
+
+    .nav-area {
+      flex-grow: 1;
+      margin: 0 40px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav li {
+      text-align: center;
+      color: #212121;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .search-area {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-area input[type="text"] {
+      width: 140px;
+      padding: 6px 8px;
+      font-size: 16px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      border-radius: 0;
+      outline: none;
+      background: transparent;
+      transition: border-color 0.3s;
+    }
+
+    .search-area input[type="text"]:focus {
+      border-bottom: 2px solid #212121;
+    }
+
+    .search-area button {
+      background-color: transparent;
+      border: none;
+      padding: 3px 10px;
+      color: #212121;
+      border-bottom: 2px solid #ccc;
+      cursor: pointer;
+    }
+
+    .search-area svg {
+      vertical-align: middle;
+    }
+
+    .department {
+      background-color: #efe7dc;
+      padding: 15px 0;
+      margin-bottom: 0;
+    }
+
+    .department ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    .department li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .department li img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    .department li div {
+      font-size: 20px;
+      padding: 5px 17px;
+      border: 2px solid #212121;
+      border-radius: 5px;
+      color: #212121;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      height: 300px;
+      overflow: hidden;
+      margin-top: 0;
+    }
+
+    .carousel-slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-slide.active {
+      display: block;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      font-size: 2rem;
+      padding: 0 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .carousel-btn.prev {
+      left: 10px;
+    }
+
+    .carousel-btn.next {
+      right: 10px;
+    }
+
+    .home-panel {
+      display: flex;
+      gap: 30px;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 30px;
+    }
+
+    .home-panel .noticees {
+      flex: 4;
+    }
+
+    .home-panel .hot-link {
+      flex: 1;
+    }
+
+    .noticees {
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+
+    .noticees .title {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .title div:first-child {
+      font-size: 36px;
+      color: #212121;
+    }
+
+    .title div:last-child {
+      font-size: 24px;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .noticees ul {
+      display: flex;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    .noticees button {
+      background-color: #fdd835;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #212121;
+      border-radius: 20px 20px 0 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .noticees button:hover {
+      background-color: #b65d1d;
+      color: #fff;
+    }
+
+    .noticees button li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .noticees>div:last-child {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      row-gap: 20px;
+      column-gap: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .news-list {
+      background-color: #f4f0eb;
+      padding: 7px 18px;
+    }
+
+    .hot-link {
+      border-radius: 10px;
+      margin-top: 40px;
+    }
+
+
+    .hot-link-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .hot-link-item {
+      display: flex;
+      align-items: center;
+      background-color: #fdd835;
+      padding: 16px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #212121;
+      transition: background-color 0.3s ease;
+    }
+
+    .hot-link-item:hover {
+      background-color: #fbc02d;
+    }
+
+    .hot-link-item svg {
+      width: 32px;
+      height: 32px;
+      margin-right: 16px;
+      flex-shrink: 0;
+      fill: currentColor;
+    }
+
+    .hot-link-item-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hot-link-item-text div:first-child {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .hot-link-item-text div:last-child {
+      font-size: 19px;
+    }
+
+    .department-video {
+      padding: 40px 0;
+      background-color: #F4F0EB;
+    }
+
+    .department-video-section {
+      margin: 40px 0 0 0;
+      text-align: center;
+    }
+
+    .department-video-list {
+      display: flex;
+      gap: 36px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .department-video-item {
+      width: 352px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+    }
+
+    .department-video-item video,
+    .department-video-item iframe {
+      width: 352px;
+      height: 198px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+      margin-bottom: 14px;
+    }
+
+    .department-video-caption {
+      margin-top: 0;
+      font-size: 1.12rem;
+      color: #222;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .honor-roll {
+      margin-top: 40px;
+    }
+
+    .honor-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .honor-card {
+      display: flex;
+      width: 48%;
+      background-color: #f4f0eb;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .honor-card img {
+      width: 216px;
+      height: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .honor-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .honor-date {
+      font-size: 16px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .honor-desc {
+      font-size: 18px;
+      font-weight: 500;
+      color: #212121;
+      line-height: 1.4;
+    }
+
+    .footer {
+      background: #EFE7DC;
+      color: #212121;
+      padding: 40px 20px 18px 20px;
+      position: relative;
+      font-size: 16px;
+    }
+
+    .footer-content-row {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .footer .footer-logo-area {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-right: 32px;
+      margin-bottom: 10px;
+    }
+
+    .footer .footer-logo-area img {
+      height: 50px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer-info-columns {
+      display: flex;
+      flex: 1 1 0%;
+      gap: 48px;
+    }
+
+    .footer-info-columns>div {
+      min-width: 450px;
+    }
+
+    .footer-info-columns p {
+      margin: 3px 0;
+    }
+
+    .footer-contact-info p {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0;
+      font-size: 16px;
+      color: #212121;
+    }
+
+    .footer-contact-info svg {
+      width: 20px;
+      height: 20px;
+      fill: #b65d1d;
+      flex-shrink: 0;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      justify-content: space-between;
+      border-top: 1px solid #444;
+      margin-top: 36px;
+      padding-top: 12px;
+      font-size: 15px;
+      color: #bbb;
+    }
+
+    .footer-bottom p {
+      margin: 3px 0;
+    }
+
+    .footer-custom-block {
+      background: #EFE7DC;
+      color: #212121;
+      max-width: 980px;
+      margin: 0 auto 0 auto;
+      border-radius: 10px 10px 0 0;
+      padding: 38px 18px 18px 18px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 36px;
+      font-size: 17px;
+    }
+
+    .footer-custom-block .footer-main-info {
+      min-width: 176px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 0.2em;
+    }
+
+    .footer-custom-block .footer-main-info p {
+      margin: 0 0 2px 0;
+    }
+
+    .footer-custom-block .footer-icons-section {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .footer-custom-block .footer-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-custom-block .footer-group svg {
+      width: 26px;
+      height: 26px;
+      vertical-align: middle;
+      color: #b65d1d;
+    }
+
+    .footer-custom-block .footer-group p {
+      margin: 0 10px 0 0;
+      font-size: 18px;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    @media (max-width:600px) {
+      .footer-custom-block {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 7px 15px 7px;
+      }
+
+      .footer-custom-block .footer-icons-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 9px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .footer-content-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .footer-info-columns {
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .footer .footer-logo-area {
+        margin-right: 0;
+        align-items: center;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .header-top {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .department ul {
+        flex-direction: column;
+      }
+
+      .department li {
+        justify-content: center;
+      }
+
+      .home-panel {
+        flex-direction: column;
+      }
+
+      .honor-card {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .honor-card img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="link-bar">
+      <a href="https://www.nutc.edu.tw/" target="_blank">學校首頁</a>
+      <a href="https://coinformation.nutc.edu.tw/" target="_blank">學院首頁</a>
+    </div>
+
+    <header>
+      <div class="header-top">
+        <div class="logo-area">
+          <img src="imlogo.png" alt="Logo左" />
+          <img src="title_2.png" alt="Logo右" />
+        </div>
+
+        <nav class="nav-area">
+          <ul class="nav">
+            <li>
+              <div>關於系所</div>
+              <div>About</div>
+            </li>
+            <li>
+              <div>師資與研究</div>
+              <div>Research</div>
+            </li>
+            <li>
+              <div>課程介紹</div>
+              <div>Courses</div>
+            </li>
+            <li>
+              <div>系所辦法</div>
+              <div>Law</div>
+            </li>
+            <li>
+              <div>招生資訊</div>
+              <div>Admissions</div>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="search-area">
+          <input type="text" placeholder="搜尋 Search..." />
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" width="24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 
+                0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 
+                0 0 0 10.607 10.607Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="header-bottom department">
+        <ul>
+          <li>
+            <img src="department1.png" alt="系所1" />
+            <div>資訊管理科</div>
+          </li>
+          <li>
+            <img src="department1.png" alt="系所2" />
+            <div>資訊應用菁英班</div>
+          </li>
+          <li>
+            <img src="department1.png" alt="系所3" />
+            <div>資訊管理系</div>
+          </li>
+          <li>
+            <img src="department1.png" alt="系所4" />
+            <div>碩士班</div>
+          </li>
+          <li>
+            <img src="department1.png" alt="系所5" />
+            <div>碩士在職專班</div>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="carousel">
+      <div class="carousel-slide active">
+        <img src="image1.jpg" alt="圖片1" />
+      </div>
+      <div class="carousel-slide">
+        <img src="image2.jpg" alt="圖片2" />
+      </div>
+      <div class="carousel-slide">
+        <img src="image3.jpg" alt="圖片3" />
+      </div>
+      <button class="carousel-btn prev">&#10094;</button>
+      <button class="carousel-btn next">&#10095;</button>
+    </div>
+    <div class="home-panel">
+      <div class="noticees">
+        <div class="title">
+          <div>最新消息</div>
+          <div>Latest News</div>
+        </div>
+        <ul>
+          <li>
+            <button class="announcement-tab active" data-type="all">
+              <div>所有公告</div>
+              ALL
+            </button>
+          </li>
+          <li>
+            <button class="announcement-tab" data-type="news">
+              <div>重要公告</div>
+              IMPORTANT
+            </button>
+          </li>
+          <li>
+            <button class="announcement-tab" data-type="events">
+              <div>活動快訊</div>
+              EVENTS
+            </button>
+          </li>
+          <li>
+            <button class="announcement-tab" data-type="events">
+              <div>榮譽表現</div>
+              hononr
+            </button>
+          </li>
+          <li>
+            <button class="announcement-tab" data-type="events">
+              <div>徵才實習</div>
+              Recruitment
+            </button>
+          </li>
+          <li>
+            <button class="announcement-tab" data-type="events">
+              <div>獎助學金</div>
+              performance
+            </button>
+          </li>
+          <li>
+            <button class="announcement-tab" data-type="events">
+              <div>其他公告</div>
+              EVENTS
+            </button>
+          </li>
+        </ul>
+        <div class="news-list"></div>
+
+      </div>
+      <div class="hot-link">
+        <div class="title">
+          <div>常用功能</div>
+          <div>HOT LINKS</div>
+        </div>
+
+        <div class="hot-link-links">
+          <a href="#" class="hot-link-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M1 3h22v18H1zm4 8v2h6v-2zm0 4v2h14v-2zm11.5-6.3L19 10.75V5h-5v5.7z" />
+            </svg>
+            <div class="hot-link-item-text">
+              <div>證照資訊</div>
+              <div>CERTIFICATE</div>
+            </div>
+          </a>
+
+          <a href="#" class="hot-link-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12 2L3 7v6c0 5 4 9 9 9s9-4 9-9V7z" />
+            </svg>
+            <div class="hot-link-item-text">
+              <div>畢業門檻</div>
+              <div>THRESHOLD</div>
+            </div>
+          </a>
+
+          <a href="#" class="hot-link-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M4 4h16v2H4zm0 6h16v2H4zm0 6h16v2H4z" />
+            </svg>
+            <div class="hot-link-item-text">
+              <div>表單下載</div>
+              <div>DOWNLOAD</div>
+            </div>
+          </a>
+          <a href="#" class="hot-link-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M4 4h16v2H4zm0 6h16v2H4zm0 6h16v2H4z" />
+            </svg>
+            <div class="hot-link-item-text">
+              <div>專題成果</div>
+              <div>INTERNSHIP</div>
+            </div>
+          </a>
+          <a href="#" class="hot-link-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M4 4h16v2H4zm0 6h16v2H4zm0 6h16v2H4z" />
+            </svg>
+            <div class="hot-link-item-text">
+              <div>實習專區</div>
+              <div>INTERNSHIP</div>
+            </div>
+          </a>
+          <a href="#" class="hot-link-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M4 4h16v2H4zm0 6h16v2H4zm0 6h16v2H4z" />
+            </svg>
+            <div class="hot-link-item-text">
+              <div>場地租借</div>
+              <div>RENTAL</div>
+            </div>
+          </a>
+          <a href="#" class="hot-link-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M4 4h16v2H4zm0 6h16v2H4zm0 6h16v2H4z" />
+            </svg>
+            <div class="hot-link-item-text">
+              <div>常見問題</div>
+              <div>FAQ</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="department-video">
+      <div class="title">
+        <div>系所影片</div>
+        <div>Department Video</div>
+      </div>
+      <div class="department-video-section">
+
+        <div class="department-video-list">
+          <div class="department-video-item">
+            <video src="sample1.mp4" controls preload="none" poster="cover1.jpg"></video>
+            <div class="department-video-caption">資管系簡介 (Introduction to MIS)</div>
+          </div>
+          <div class="department-video-item">
+            <iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe>
+            <div class="department-video-caption">學生專題成果展示</div>
+          </div>
+          <div class="department-video-item">
+            <iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe>
+            <div class="department-video-caption">學生專題成果展示</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="honor-roll">
+      <div class="title">
+        <div>榮譽表現</div>
+        <div>HONOR ROLL</div>
+      </div>
+      <div class="honor-list">
+        <div class="honor-card">
+          <img src="honor.png" alt="得獎照片 1" />
+          <div class="honor-content">
+            <div class="honor-date">2025.07.01</div>
+            <div class="honor-desc">學生參加資安競賽榮獲全國第一</div>
+          </div>
+        </div>
+        <div class="honor-card">
+          <img src="honor.png" alt="得獎照片 2" />
+          <div class="honor-content">
+            <div class="honor-date">2025.06.28</div>
+            <div class="honor-desc">專題計畫獲科技部創新研究獎</div>
+          </div>
+        </div>
+        <div class="honor-card">
+          <img src="honor.png" alt="得獎照片 3" />
+          <div class="honor-content">
+            <div class="honor-date">2025.06.10</div>
+            <div class="honor-desc">資管系學生榮獲校內傑出服務獎</div>
+          </div>
+        </div>
+        <div class="honor-card">
+          <img src="honor.png" alt="得獎照片 4" />
+          <div class="honor-content">
+            <div class="honor-date">2025.05.22</div>
+            <div class="honor-desc">參與國際比賽，勇奪佳作</div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="footer">
+      <div class="footer-content-row">
+        <div class="footer-logo-area">
+          <img src="imlogo.png" alt="Logo左" />
+          <img src="title_2.png" alt="Logo右" />
+        </div>
+        <div class="footer-info-columns">
+          <div class="footer-contact-info">
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21c1.21.49 2.53.76 3.9.76a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1A17.83 17.83 0 0 1 4 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.37.27 2.69.76 3.9a1 1 0 0 1-.2 1.11l-2.44 2.44z" />
+              </svg>
+              電話：(04)2219-6310
+            </p>
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M21 16V8a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8 10h8v2H8z" />
+              </svg>
+              傳真：(04)2219-6311
+            </p>
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M22 4H2v16h20V4zm-2 10h-4v2h-4v-2H6v-4h4V8h4v2h4v4z" />
+              </svg>
+              郵箱：im10@nutc.edu.tw
+            </p>
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM12 11a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+              </svg>
+              地址：404 台中巿三民路三段129號(資訊館四樓)
+            </p>
+          </div>
+          <div class="footer-main-info">
+            <p>國立臺中科技大學</p>
+            <p>資訊與流通學院</p>
+          </div>
+          <div class="footer-contact-info">
+            <div class="footer-group">
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+                </svg>
+                資管科學會</p>
+            </div>
+            <div class="footer-group">
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+                </svg>
+                資管系學會</p>
+            </div>
+            <div class="footer-group">
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M20.9 2H3.1A1.1 1.1 0 0 0 2 3.1v17.8A1.1 1.1 0 0 0 3.1 22h9.58v-7.75h-2.6v-3h2.6V9a3.64 3.64 0 0 1 3.88-4a20 20 0 0 1 2.33.12v2.7H17.3c-1.26 0-1.5.6-1.5 1.47v1.93h3l-.39 3H15.8V22h5.1a1.1 1.1 0 0 0 1.1-1.1V3.1A1.1 1.1 0 0 0 20.9 2" />
+                </svg>
+                系友臉書社團</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>COPYRIGHT © 2025 Department of Information Management Of NUTC.</p>
+        <p>資訊安全及隱私權政策</p>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".carousel-slide");
+    let currentIndex = 0;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+    }
+    document.querySelector(".carousel-btn.prev").onclick = function () {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    };
+    document.querySelector(".carousel-btn.next").onclick = function () {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    };
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }, 3000);
+
+    const buttons = document.querySelectorAll(".announcement-tab");
+    const newsList = document.querySelector(".news-list");
+    const newsData = {
+      all: [
+        { date: "2025.07.01", title: "【全部】中科資管勇奪競賽第一！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+      ],
+      news: [
+        { date: "2025.07.03", title: "【新聞】榮獲全國創新優勝！" },
+        { date: "2025.07.05", title: "【新聞】學生AI專題成果亮眼" },
+      ],
+      events: [
+        { date: "2025.07.10", title: "【活動】迎新茶會 7/20 舉辦" },
+        { date: "2025.07.12", title: "【活動】資管之夜報名開放中" },
+      ],
+    };
+    function loadNews(type) {
+      const data = newsData[type] || [];
+      newsList.innerHTML = "";
+      data.forEach((item) => {
+        const dateDiv = document.createElement("div");
+        dateDiv.textContent = item.date;
+        const titleDiv = document.createElement("div");
+        titleDiv.textContent = item.title;
+        newsList.appendChild(dateDiv);
+        newsList.appendChild(titleDiv);
+      });
+    }
+    loadNews("all");
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const type = button.getAttribute("data-type");
+        loadNews(type);
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+      });
+    });
+  </script>
+</body>
+
+</html>
