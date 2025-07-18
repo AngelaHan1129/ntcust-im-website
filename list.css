@@ -1,0 +1,28 @@
+.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #ffffff;
+}
+.breadcrumb > li {
+  display: inline-block;
+}
+.breadcrumb > li a{
+    color: #000000;
+    text-decoration: none;
+}
+.breadcrumb > li a:hover{
+    color: #494949;
+    text-decoration: underline;
+}
+.breadcrumb > li + li:before {
+  padding: 0 5px;
+  color: #494949;
+  content: "/\00a0";
+}
+.breadcrumb > .active {
+  color: #777;
+}
+.mt .mt-title{
+    display: none;
+}
