@@ -434,7 +434,7 @@ body {
 }
 
 .footer .footer-logo-area img {
-    height: 50px;
+    height: 96px;
     margin-bottom: 10px;
     display: block;
 }
@@ -537,6 +537,36 @@ body {
     font-size: 18px;
     display: inline-block;
     font-weight: 500;
+}
+.back-to-top {
+  position: absolute;
+  top: -30px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 122px;
+  height: 122px;
+  background-color: #FFF176;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.back-to-top:hover {
+  transform: translate(-50%, -4px);
+  opacity: 0.9;
+}
+
+.back-to-top svg {
+  width: 28px;
+  height: 28px;
+  fill: #212121;
 }
 
 @media (max-width:600px) {
