@@ -25,12 +25,12 @@ body {
     font-weight: bold;
 }
 
+/* ===== Header區域 ===== */
 .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
-    border-bottom: 2px solid #ccc;
 }
 
 .logo-area {
@@ -76,7 +76,6 @@ body {
     font-size: 16px;
     border: none;
     border-bottom: 2px solid #ccc;
-    border-radius: 0;
     outline: none;
     background: transparent;
     transition: border-color 0.3s;
@@ -87,7 +86,7 @@ body {
 }
 
 .search-area button {
-    background-color: transparent;
+    background: transparent;
     border: none;
     padding: 3px 10px;
     color: #212121;
@@ -100,9 +99,8 @@ body {
 }
 
 .department {
-    background-color: #efe7dc;
+    background: #efe7dc;
     padding: 15px 0;
-    margin-bottom: 0;
 }
 
 .department ul {
@@ -138,6 +136,7 @@ body {
     white-space: nowrap;
 }
 
+/* ===== 輪播區 ===== */
 .carousel {
     position: relative;
     width: 100%;
@@ -184,6 +183,7 @@ body {
     right: 10px;
 }
 
+/* ===== 主面板 ===== */
 .home-panel {
     display: flex;
     gap: 30px;
@@ -201,8 +201,12 @@ body {
 }
 
 .noticees {
-    margin-top: 20px;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* 保留以備後用 */
+    padding-bottom: 60px;
+    /* 預留底部空間給按鈕 */
 }
 
 .noticees .title {
@@ -221,76 +225,97 @@ body {
     margin-top: 5px;
 }
 
+/* ===== 最新消息 Tab ===== */
 .noticees ul {
     display: flex;
     gap: 10px;
     list-style: none;
     padding: 0;
     margin-bottom: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: #d9d2c6 #f4f0eb;
+}
+
+.noticees ul li {
+    flex: 0 0 auto;
+    width: 110px;
 }
 
 .noticees button {
-    background-color: #fdd835;
+    width: 110px;
+    min-width: 110px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    background: #fdd835;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     color: #212121;
     border-radius: 20px 20px 0 0;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 .noticees button:hover {
-    background-color: #b65d1d;
+    background: #b65d1d;
     color: #fff;
 }
 
-.noticees button li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.noticees>div:last-child {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    row-gap: 20px;
-    column-gap: 10px;
-    font-size: 18px;
-    color: #333;
-}
-
 .news-list {
-    background-color: #f4f0eb;
-    padding: 7px 18px;
+    /* 讓新聞列表彈性增長 */
+    flex-grow: 1;
 }
 
+/* 最新消息列表 */
+.news-list article {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    color: #212121;
+}
+
+.news-list article:nth-child(odd) {
+    background: #f4f0eb;
+}
+
+.news-list article:nth-child(even) {
+    background: #d9d2c6;
+}
+
+/* ====== 常用功能 ====== */
 .hot-link {
     border-radius: 10px;
-    margin-top: 40px;
+    margin: 0 0 40px 0;
 }
-
 
 .hot-link-links {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 18px;
 }
 
 .hot-link-item {
+    flex: 1 1 48%;
+    min-width: 280px;
+    max-width: 100%;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    background-color: #fdd835;
+    background: #fdd835;
     padding: 16px 20px;
     border-radius: 8px;
     text-decoration: none;
     color: #212121;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 .hot-link-item:hover {
-    background-color: #fbc02d;
+    background: #fbc02d;
 }
 
 .hot-link-item svg {
@@ -315,9 +340,24 @@ body {
     font-size: 19px;
 }
 
+
+/* ===== 系所影片 ===== */
 .department-video {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: #F4F0EB;
     padding: 40px 0;
-    background-color: #F4F0EB;
+    box-sizing: border-box;
+}
+
+.department-video .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
 }
 
 .department-video-section {
@@ -357,8 +397,41 @@ body {
     line-height: 1.6;
 }
 
+.more-news-btn {
+    align-self: flex-end;
+    /* 靠右 */
+    margin-top: 10px;
+    margin-right: 14px;
+    width: 193px;
+    height: 44px;
+    background: #FDD835;
+    color: #B65D1D;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: filter 0.15s;
+    z-index: 2;
+}
+
+.more-news-btn .btn-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.more-news-btn:hover {
+    filter: brightness(0.95);
+}
+
+/* ===== 榮譽榜 ===== */
 .honor-roll {
-    margin-top: 40px;
+    margin: 40px 0;
 }
 
 .honor-list {
@@ -372,7 +445,7 @@ body {
 .honor-card {
     display: flex;
     width: 48%;
-    background-color: #f4f0eb;
+    background: #f4f0eb;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -405,19 +478,19 @@ body {
     line-height: 1.4;
 }
 
+/* ===== Footer ===== */
 .footer {
+    position: relative;
     background: #EFE7DC;
     color: #212121;
-    padding: 40px 20px 18px 20px;
-    position: relative;
+    padding: 65px 20px 18px 20px;
     font-size: 16px;
 }
 
 .footer-content-row {
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
     max-width: 1200px;
     margin: 0 auto;
     gap: 36px;
@@ -434,7 +507,7 @@ body {
 }
 
 .footer .footer-logo-area img {
-    height: 50px;
+    height: 96px;
     margin-bottom: 10px;
     display: block;
 }
@@ -472,11 +545,11 @@ body {
 .footer-bottom {
     display: flex;
     flex-direction: row;
-    text-align: center;
+    align-items: baseline;
     justify-content: space-between;
-    border-top: 1px solid #444;
-    margin-top: 36px;
-    padding-top: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
     font-size: 15px;
     color: #bbb;
 }
@@ -489,13 +562,12 @@ body {
     background: #EFE7DC;
     color: #212121;
     max-width: 980px;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
     border-radius: 10px 10px 0 0;
     padding: 38px 18px 18px 18px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
     gap: 36px;
     font-size: 17px;
 }
@@ -504,7 +576,6 @@ body {
     min-width: 176px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     gap: 0.2em;
 }
 
@@ -515,7 +586,6 @@ body {
 .footer-custom-block .footer-icons-section {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
     gap: 18px;
 }
 
@@ -528,80 +598,192 @@ body {
 .footer-custom-block .footer-group svg {
     width: 26px;
     height: 26px;
-    vertical-align: middle;
     color: #b65d1d;
 }
 
 .footer-custom-block .footer-group p {
     margin: 0 10px 0 0;
     font-size: 18px;
-    display: inline-block;
     font-weight: 500;
+    display: inline-block;
 }
 
-@media (max-width:600px) {
-    .footer-custom-block {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px 7px 15px 7px;
-    }
+.back-to-top {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background: #FFF176;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
 
-    .footer-custom-block .footer-icons-section {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 9px;
+.back-to-top:hover {
+    transform: translate(-50%, -4px);
+    opacity: 0.9;
+}
+
+.back-to-top svg {
+    width: 28px;
+    height: 28px;
+    fill: #212121;
+}
+
+/* ===== RWD ===== */
+@media (max-width:1200px) {
+    .container {
+        max-width: 100vw;
+        padding: 0 12px;
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
+
+    .header-top,
+    .footer-info-columns,
     .footer-content-row {
         flex-direction: column;
         align-items: center;
         gap: 20px;
     }
 
-    .footer-info-columns {
-        flex-direction: column;
-        gap: 18px;
-        align-items: center;
-    }
-
-    .footer .footer-logo-area {
-        margin-right: 0;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .header-top {
-        flex-direction: column;
-        gap: 20px;
-    }
-
     .nav {
+        gap: 10px;
         flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .department ul {
-        flex-direction: column;
     }
 
     .department li {
-        justify-content: center;
+        margin: 8px 0;
+    }
+
+    .hot-link-item {
+        flex: 1 1 100%;
+        min-width: 180px;
+    }
+
+    .noticees ul li,
+    .noticees button {
+        width: 90px;
+        min-width: 90px;
+    }
+}
+
+@media (max-width:768px) {
+    .nav {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .header-top {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .carousel,
+    .carousel-slide img {
+        height: 180px;
     }
 
     .home-panel {
         flex-direction: column;
+        gap: 24px;
+        margin-top: 18px;
+    }
+
+    .hot-link {
+        margin-bottom: 36px;
+    }
+
+    .hot-link-links {
+        gap: 8px;
+    }
+
+    .department ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .department li img {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+@media (max-width:600px) {
+    html {
+        font-size: 14px;
+    }
+
+    .logo-area img {
+        height: 36px;
+    }
+
+    .carousel,
+    .carousel-slide img {
+        height: 100px;
+    }
+
+    .department-video-section,
+    .container {
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+
+    .department-video-list {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .department-video-item,
+    .department-video-item video,
+    .department-video-item iframe {
+        width: 100%;
+        min-width: 0;
+        height: 160px;
+    }
+
+    .noticees ul li,
+    .noticees button {
+        width: 80px;
+        min-width: 80px;
+        font-size: 14px;
+        padding: 8px 6px;
+    }
+
+    .honor-list {
+        gap: 10px;
+        flex-direction: column;
     }
 
     .honor-card {
-        flex-direction: column;
         width: 100%;
+        flex-direction: column;
     }
 
     .honor-card img {
         width: 100%;
         height: auto;
+    }
+ .hot-link-item {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+    .footer-content-row {
+        padding: 0;
+    }
+
+    .footer .footer-logo-area img {
+        height: 36px;
     }
 }
