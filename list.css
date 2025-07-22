@@ -17331,12 +17331,12 @@ div.hdsearch {
 }
 .list-group .list-group-item:hover > a:first-child {
   border-radius: 3px 15px 15px 3px;
-  background-color: #FFF5CA !important;
+  background-color: #FFDD53 !important;
   color: #212121 !important;
   text-decoration: none;
 }
 .list-group .list-group-item li a:hover {
-  background-color: #FFFBEA !important;
+  background-color: #FFF176 !important;
   color: #212121 !important;
   text-decoration: none;
 }
