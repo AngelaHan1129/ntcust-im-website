@@ -1,0 +1,423 @@
+<style type="text/css">
+.footer {
+    position: relative;
+    background: #EFE7DC;
+    color: #212121;
+    padding: 65px 20px 18px 20px;
+    font-size: 16px;
+}
+
+.footer-content-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 36px;
+    flex-wrap: wrap;
+}
+
+.footer .footer-logo-area {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-right: 32px;
+    margin-bottom: 10px;
+}
+
+.footer .footer-logo-area img {
+    height: 96px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.footer-info-columns {
+    display: flex;
+    flex: 1 1 0%;
+    gap: 48px;
+}
+
+.footer-info-columns>div {
+    min-width: 450px;
+}
+
+.footer-info-columns p {
+    margin: 3px 0;
+}
+
+.footer-contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+    font-size: 16px;
+    color: #212121;
+}
+
+.footer-contact-info svg {
+    width: 20px;
+    height: 20px;
+    fill: #b65d1d;
+    flex-shrink: 0;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    font-size: 15px;
+    color: #bbb;
+}
+
+.footer-bottom p {
+    margin: 3px 0;
+}
+
+.footer-custom-block {
+    background: #EFE7DC;
+    color: #212121;
+    max-width: 980px;
+    margin: 0 auto;
+    border-radius: 10px 10px 0 0;
+    padding: 38px 18px 18px 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 36px;
+    font-size: 17px;
+}
+
+.footer-custom-block .footer-main-info {
+    min-width: 176px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+}
+
+.footer-custom-block .footer-main-info p {
+    margin: 0 0 2px 0;
+}
+
+.footer-custom-block .footer-icons-section {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+}
+
+.footer-custom-block .footer-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-custom-block .footer-group svg {
+    width: 26px;
+    height: 26px;
+    color: #b65d1d;
+}
+
+.footer-custom-block .footer-group p {
+    margin: 0 10px 0 0;
+    font-size: 18px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.back-to-top {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background: #FFF176;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.back-to-top:hover {
+    transform: translate(-50%, -4px);
+    opacity: 0.9;
+}
+
+.back-to-top svg {
+    width: 28px;
+    height: 28px;
+    fill: #212121;
+}
+
+/* ===== RWD ===== */
+@media (max-width:1200px) {
+    .container {
+        max-width: 100vw;
+        padding: 0 12px;
+    }
+}
+
+@media (max-width:900px) {
+
+    .header-top,
+    .footer-info-columns,
+    .footer-content-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .nav {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .department li {
+        margin: 8px 0;
+    }
+
+    .hot-link-item {
+        flex: 1 1 100%;
+        min-width: 180px;
+    }
+
+    .noticees ul li,
+    .noticees button {
+        width: 90px;
+        min-width: 90px;
+    }
+}
+
+@media (max-width:768px) {
+    .nav {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .header-top {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .carousel,
+    .carousel-slide img {
+        height: 180px;
+    }
+
+    .home-panel {
+        flex-direction: column;
+        gap: 24px;
+        margin-top: 18px;
+    }
+
+    .hot-link {
+        margin-bottom: 36px;
+    }
+
+    .hot-link-links {
+        gap: 8px;
+    }
+
+    .department ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .department li img {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+@media (max-width:600px) {
+    html {
+        font-size: 14px;
+    }
+
+    .logo-area img {
+        height: 36px;
+    }
+
+    .carousel,
+    .carousel-slide img {
+        height: 100px;
+    }
+
+    .department-video-section,
+    .container {
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+
+    .department-video-list {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .department-video-item,
+    .department-video-item video,
+    .department-video-item iframe {
+        width: 100%;
+        min-width: 0;
+        height: 160px;
+    }
+
+    .noticees ul li,
+    .noticees button {
+        width: 80px;
+        min-width: 80px;
+        font-size: 14px;
+        padding: 8px 6px;
+    }
+
+    .honor-list {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .honor-card {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .honor-card img {
+        width: 100%;
+        height: auto;
+    }
+ .hot-link-item {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+    .footer-content-row {
+        padding: 0;
+    }
+
+    .footer .footer-logo-area img {
+        height: 36px;
+    }
+}
+</style>
+<div>
+<div class="footer-content-row">
+<div class="footer-logo-area"><img alt="Logo左" height="" src="https://im.nutc.edu.tw/var/file/63/1063/img/1434/imlogo.png" width="125" /> <img alt="Logo右" height="100" src="https://im.nutc.edu.tw/var/file/63/1063/img/1434/title_2.png" width="250" /></div>
+
+<div class="footer-info-columns">
+<div class="footer-contact-info">
+<p><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21c1.21.49 2.53.76 3.9.76a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1A17.83 17.83 0 0 1 4 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.37.27 2.69.76 3.9a1 1 0 0 1-.2 1.11l-2.44 2.44z"></path> </svg> 電話：(04)2219-6310</p>
+
+<p><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M21 16V8a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8 10h8v2H8z"></path> </svg> 傳真：(04)2219-6311</p>
+
+<p><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M22 4H2v16h20V4zm-2 10h-4v2h-4v-2H6v-4h4V8h4v2h4v4z"></path> </svg> 郵箱：im10@nutc.edu.tw</p>
+
+<p><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM12 11a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"></path> </svg> 地址：404 台中巿三民路三段129號(資訊館四樓)</p>
+</div>
+
+<div class="footer-main-info">
+<p>國立臺中科技大學</p>
+
+<p>資訊與流通學院</p>
+</div>
+
+<div class="footer-contact-info">
+<div class="footer-group">
+<p><svg height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" fill="currentColor"></path> </svg> 資管科學會</p>
+</div>
+
+<div class="footer-group">
+<p><svg height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" fill="currentColor"></path> </svg> 資管系學會</p>
+</div>
+
+<div class="footer-group">
+<p><svg height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="M20.9 2H3.1A1.1 1.1 0 0 0 2 3.1v17.8A1.1 1.1 0 0 0 3.1 22h9.58v-7.75h-2.6v-3h2.6V9a3.64 3.64 0 0 1 3.88-4a20 20 0 0 1 2.33.12v2.7H17.3c-1.26 0-1.5.6-1.5 1.47v1.93h3l-.39 3H15.8V22h5.1a1.1 1.1 0 0 0 1.1-1.1V3.1A1.1 1.1 0 0 0 20.9 2" fill="currentColor"></path> </svg> 系友臉書社團</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p>COPYRIGHT &copy; 2025 Department of Information Management Of NUTC.</p>
+
+<p>資訊安全及隱私權政策</p>
+</div>
+
+<div class="back-to-top custom-cursor-on-hover" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"><svg height="2048" viewbox="0 0 2048 2048" width="2048" xmlns="http://www.w3.org/2000/svg"> <path d="m1453 499l-90 90l-338-337l-1 1796H896l1-1799l-340 340l-90-90L960 6z" fill="currentColor"></path> </svg>
+
+<p>返回頂部</p>
+</div>
+</div>
+<script>
+    const slides = document.querySelectorAll(".carousel-slide");
+    let currentIndex = 0;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+    }
+    document.querySelector(".carousel-btn.prev").onclick = function () {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    };
+    document.querySelector(".carousel-btn.next").onclick = function () {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    };
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }, 3000);
+
+    const buttons = document.querySelectorAll(".announcement-tab");
+    const newsList = document.querySelector(".news-list");
+    const newsData = {
+      all: [
+        { date: "2025.07.01", title: "【全部】中科資管勇奪競賽第一！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+        { date: "2025.07.02", title: "【全部】學術成果發表會開跑！" },
+      ],
+      news: [
+        { date: "2025.07.03", title: "【新聞】榮獲全國創新優勝！" },
+        { date: "2025.07.05", title: "【新聞】學生AI專題成果亮眼" },
+      ],
+      events: [
+        { date: "2025.07.10", title: "【活動】迎新茶會 7/20 舉辦" },
+        { date: "2025.07.12", title: "【活動】資管之夜報名開放中" },
+      ],
+    };
+    function loadNews(type) {
+      const data = newsData[type] || [];
+      newsList.innerHTML = "";
+      data.forEach((item) => {
+        const article = document.createElement("article");
+        // 將日期與標題合併在同一個div
+        const rowDiv = document.createElement("div");
+        rowDiv.textContent = item.date + item.title;
+        article.appendChild(rowDiv);
+        newsList.appendChild(article);
+      });
+    }
+    loadNews("all");
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const type = button.getAttribute("data-type");
+        loadNews(type);
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+      });
+    });
+  </script>

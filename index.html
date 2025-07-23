@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="containers">
     <div class="link-bar">
       <a href="https://www.nutc.edu.tw/" target="_blank">學校首頁</a>
       <a href="https://coinformation.nutc.edu.tw/" target="_blank">學院首頁</a>
@@ -84,7 +84,7 @@
     </ul>
   </div>
   </header>
-  <div class="container">
+  <div class="containers">
     <div class="carousel">
       <div class="carousel-slide active">
         <img src="image1.jpg" alt="圖片1" />
@@ -247,7 +247,7 @@
     </div>
   </div>
   <div class="department-video">
-    <div class="container">
+    <div class="containers">
       <div class="title">
         <div>系所影片</div>
         <div>Department Video</div>
@@ -271,7 +271,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="containers">
 
     <div class="honor-roll">
       <div class="title">
@@ -389,6 +389,9 @@
   </div>
 
   <script>
+    $(document).ready(function () {
+        $.hajaxOpenUrl("/app/index.php?Action=mobileloadmod&Type=mobile_sz_mstr&Nbr=252", '#banner');
+    });
     const slides = document.querySelectorAll(".carousel-slide");
     let currentIndex = 0;
     function showSlide(index) {
