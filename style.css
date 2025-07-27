@@ -73,7 +73,7 @@ body {
 .search-area input[type="text"] {
     width: 140px;
     padding: 6px 8px;
-    font-size: 16px;
+    font-size: 14px;
     border: none;
     border-bottom: 2px solid #ccc;
     outline: none;
@@ -96,6 +96,77 @@ body {
 
 .search-area svg {
     vertical-align: middle;
+}
+
+/* ===== 系所影片 ===== */
+.department-video {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: #F4F0EB;
+    padding: 40px 0;
+    box-sizing: border-box;
+}
+
+.department-video .containers {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.department-video-section {
+    margin: 40px 0 0 0;
+    text-align: center;
+}
+
+.department-video-list {
+    display: flex;
+    gap: 36px;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.department-video-item {
+    width: 352px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.department-video-item video,
+.department-video-item iframe {
+    padding: 15px;
+    width: 352px;
+    height: 198px;
+}
+
+.department-video-item svg {
+    background-color: #FDD835;
+    border-radius: 999px;
+}
+
+.department-video-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 15px 15px;
+}
+
+.department-video-caption {
+    margin-top: 0;
+    font-size: 1.12rem;
+    color: #222;
+    text-align: center;
+    line-height: 1.6;
 }
 
 .department {
@@ -127,7 +198,7 @@ body {
 }
 
 .department li div {
-    font-size: 20px;
+    font-size: 14px;
     padding: 5px 17px;
     border: 2px solid #212121;
     border-radius: 5px;
@@ -169,7 +240,7 @@ body {
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
     border: none;
-    font-size: 2rem;
+    font-size: 14px;
     padding: 0 10px;
     cursor: pointer;
     z-index: 10;
@@ -192,8 +263,16 @@ body {
     margin-top: 30px;
 }
 
+.home-panel>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 .home-panel .noticees {
-    flex: 4;
+    width: 100%;
+    flex: 12;
 }
 
 .home-panel .hot-link {
@@ -204,9 +283,7 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    /* 保留以備後用 */
     padding-bottom: 60px;
-    /* 預留底部空間給按鈕 */
 }
 
 .noticees .title {
@@ -215,17 +292,21 @@ body {
 }
 
 .title div:first-child {
-    font-size: 36px;
+    font-size: 16px;
     color: #212121;
 }
 
 .title div:last-child {
-    font-size: 24px;
+    font-size: 14px;
     color: #666;
     margin-top: 5px;
 }
 
 /* ===== 最新消息 Tab ===== */
+.notices-tab-select {
+    display: none;
+}
+
 .noticees ul {
     display: flex;
     gap: 10px;
@@ -236,6 +317,8 @@ body {
     white-space: nowrap;
     scrollbar-width: thin;
     scrollbar-color: #d9d2c6 #f4f0eb;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 .noticees ul li {
@@ -250,11 +333,10 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
     background: #fdd835;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 14px;
     color: #212121;
     border-radius: 20px 20px 0 0;
     cursor: pointer;
@@ -297,11 +379,12 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 18px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .hot-link-item {
-    flex: 1 1 48%;
-    min-width: 280px;
+    flex: 1 1 calc(50% - 18px);
     max-width: 100%;
     box-sizing: border-box;
     display: flex;
@@ -318,6 +401,7 @@ body {
     background: #fbc02d;
 }
 
+
 .hot-link-item svg {
     width: 32px;
     height: 32px;
@@ -332,12 +416,12 @@ body {
 }
 
 .hot-link-item-text div:first-child {
-    font-size: 28px;
+    font-size: 14px;
     font-weight: bold;
 }
 
 .hot-link-item-text div:last-child {
-    font-size: 19px;
+    font-size: 14px;
 }
 
 
@@ -355,7 +439,6 @@ body {
 }
 
 .department-video .containers {
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 10px;
 }
@@ -391,7 +474,7 @@ body {
 
 .department-video-caption {
     margin-top: 0;
-    font-size: 1.12rem;
+    font-size: 14px;
     color: #222;
     text-align: center;
     line-height: 1.6;
@@ -406,10 +489,9 @@ body {
     height: 44px;
     background: #FDD835;
     color: #B65D1D;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
     border: none;
-    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -466,13 +548,13 @@ body {
 }
 
 .honor-date {
-    font-size: 16px;
+    font-size: 14px;
     color: #999;
     margin-bottom: 8px;
 }
 
 .honor-desc {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     color: #212121;
     line-height: 1.4;
@@ -484,7 +566,7 @@ body {
     background: #EFE7DC;
     color: #212121;
     padding: 65px 20px 18px 20px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .footer-content-row {
@@ -531,7 +613,7 @@ body {
     align-items: center;
     gap: 8px;
     margin: 8px 0;
-    font-size: 16px;
+    font-size: 14px;
     color: #212121;
 }
 
@@ -550,7 +632,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     flex-wrap: wrap;
-    font-size: 15px;
+    font-size: 14px;
     color: #bbb;
 }
 
@@ -569,7 +651,7 @@ body {
     flex-direction: row;
     align-items: flex-start;
     gap: 36px;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .footer-custom-block .footer-main-info {
@@ -603,7 +685,7 @@ body {
 
 .footer-custom-block .footer-group p {
     margin: 0 10px 0 0;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     display: inline-block;
 }
@@ -671,11 +753,6 @@ body {
         min-width: 180px;
     }
 
-    .noticees ul li,
-    .noticees button {
-        width: 90px;
-        min-width: 90px;
-    }
 }
 
 @media (max-width:768px) {
@@ -721,6 +798,24 @@ body {
 }
 
 @media (max-width:600px) {
+
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .containers {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .noticees {
+        padding: 0 6px;
+    }
+
     html {
         font-size: 14px;
     }
@@ -753,12 +848,58 @@ body {
         height: 160px;
     }
 
-    .noticees ul li,
-    .noticees button {
-        width: 80px;
-        min-width: 80px;
-        font-size: 14px;
-        padding: 8px 6px;
+
+    .notices-tab-list {
+        display: none !important;
+        /* 手機隱藏 ul 橫向列 */
+    }
+
+    .select-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        max-width: none;
+    }
+
+    .notices-tab-select {
+        width: 100%;
+        padding: 10px 40px 10px 16px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #212121;
+        background: linear-gradient(135deg, #FDD835 0%, #FBC02D 100%);
+        border: 2px solid #B65D1D;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 0 3px 6px rgba(182, 93, 29, 0.4);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+    }
+
+
+
+    /* hover & focus */
+    .notices-tab-select:hover,
+    .notices-tab-select:focus {
+        background: linear-gradient(135deg, #FBC02D 0%, #FDD835 100%);
+        border-color: #FF9800;
+        box-shadow: 0 6px 12px rgba(255, 152, 0, 0.5);
+        outline: none;
+    }
+
+    /* option 樣式 */
+    .notices-tab-select option {
+        background: #FFF9C4;
+        color: #212121;
+        font-weight: normal;
+    }
+
+    .notices-tab-select:focus {
+        animation: selectGlow 1.5s infinite ease-in-out;
     }
 
     .honor-list {
@@ -775,15 +916,35 @@ body {
         width: 100%;
         height: auto;
     }
- .hot-link-item {
-    flex: 1 1 100%;
-    min-width: 0;
-  }
+
+    .hot-link-links {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 12px;
+    }
+
+    .hot-link-item {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
     .footer-content-row {
         padding: 0;
     }
 
     .footer .footer-logo-area img {
         height: 36px;
+    }
+}
+
+@keyframes selectGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px 2px rgba(253, 216, 53, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 15px 4px rgba(253, 216, 53, 1);
     }
 }
