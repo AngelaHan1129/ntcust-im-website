@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+:root {
+    --color-primary: #FDD835;
+    --color-secondary: #FFF176;
+    --color-accent: #B65D1D;
+    --color-dark: #212121;
+}
+
 body {
     font-family: "Zen Kaku Gothic New", sans-serif;
 }
@@ -64,12 +71,13 @@ body {
     display: flex;
     justify-content: center;
     list-style: none;
-    gap: 30px;
+    gap: 15px;
 }
 
 .nav li {
     text-align: center;
     color: #212121;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,7 +98,8 @@ body {
 }
 
 .search-area:focus-within {
-    border-bottom: 2px solid var(--color-dark); /* 或 #212121 */
+    border-bottom: 2px solid var(--color-dark);
+    /* 或 #212121 */
 }
 
 .search-area input[type="text"],
@@ -127,7 +136,7 @@ body {
 
 /* ===== 系所影片 ===== */
 .department-video {
-    width: 100vw;
+    width: 99vw;
     position: relative;
     left: 50%;
     right: 50%;
@@ -309,7 +318,7 @@ body {
 }
 
 .home-panel .hot-link {
-    flex: 0 0 400px;
+    flex: 1;
 }
 
 .noticees {
@@ -330,7 +339,7 @@ body {
 }
 
 .title div:last-child {
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
     margin-top: 5px;
 }
@@ -409,24 +418,16 @@ body {
 
 /* ====== 常用功能 ====== */
 .hot-link {
-    border-radius: 10px;
-    margin: 0 0 40px 0;
-    width: 100%;
-    max-width: 180px;
+  border-radius: 10px;
 }
 
 .hot-link-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    width: 100%;
-    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
 }
 
 .hot-link-item {
-    flex: 1 1 calc(50% - 18px);
-    max-width: 100%;
-    box-sizing: border-box;
     display: flex;
     align-items: center;
     background: #fdd835;
@@ -435,7 +436,12 @@ body {
     text-decoration: none;
     color: #212121;
     transition: background-color 0.3s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
 }
+
 
 .hot-link-item:hover {
     background: #fbc02d;
@@ -456,32 +462,15 @@ body {
 }
 
 .hot-link-item-text div:first-child {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
 }
 
 .hot-link-item-text div:last-child {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 
-/* ===== 系所影片 ===== */
-.department-video {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    background: #F4F0EB;
-    padding: 40px 0;
-    box-sizing: border-box;
-}
-
-.department-video .containers {
-    margin: 0 auto;
-    padding: 0 10px;
-}
 
 .department-video-section {
     margin: 40px 0 0 0;
@@ -508,7 +497,6 @@ body {
     width: 352px;
     height: 198px;
     border-radius: 10px;
-    margin-bottom: 14px;
 }
 
 .department-video-caption {
@@ -769,6 +757,7 @@ body {
     fill: #212121;
 }
 
+
 /* ===== RWD ===== */
 @media (max-width:1200px) {
     .containers {
@@ -787,16 +776,56 @@ body {
         margin-bottom: 36px;
     }
 
-    .hot-link-links {
-        gap: 8px;
+    .hot-link-container {
+        display: flex;
+        flex-wrap: wrap;
+        /* 允許換行 */
+        gap: 16px;
+        /* 項目之間的間距（可調） */
     }
 
-
+    .hot-link-item {
+        flex: 1 1 calc(50% - 16px);
+        /* 每行最多兩個，保留 gap 空間 */
+        min-width: 150px;
+        /* 可視需求設最小寬度 */
+        box-sizing: border-box;
+    }
 
     .department li img {
         width: 38px;
         height: 38px;
     }
+}
+
+@media (max-width: 1100px) {
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        /* ✅ 可換行 */
+        justify-content: center;
+        /* ✅ 置中排列 */
+        gap: 10px;
+    }
+
+    .nav li {
+        width: 120px;
+        /* ✅ 固定寬度 */
+        padding: 10px 8px;
+        text-align: center;
+        /* 選用背景 */
+        border-radius: 6px;
+        white-space: nowrap;
+        /* ✅ 不換行 */
+        overflow: hidden;
+        /* 避免太長爆版 */
+        text-overflow: ellipsis;
+        /* 加上 ... */
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+
 }
 
 @media (max-width:900px) {
@@ -805,28 +834,32 @@ body {
     .footer-info-columns,
     .footer-content-row {
         flex-direction: column;
-        align-items: start;
+        align-items: center;
         gap: 20px;
     }
 
-    .nav {
-        gap: 10px;
-        flex-wrap: wrap;
-    }
+
 
     .department li {
         margin: 8px 0;
     }
 
-    .hot-link-item {
-        flex: 1 1 100%;
-        min-width: 180px;
-    }
 
 }
 
 @media (max-width:768px) {
+    .nav-area {
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+    }
 
+    .nav-area.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
 
     .header-top {
         flex-direction: column;
@@ -859,20 +892,13 @@ body {
         display: block;
     }
 
-    .nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .nav li {
-        padding: 10px 0;
-        width: 100%;
-    }
-
     .nav li:hover {
         background-color: #fdd835;
         border-radius: 0;
+    }
+
+    .hot-link-links {
+        flex-direction: column;
     }
 
 }
@@ -978,15 +1004,13 @@ body {
     }
 
     .hot-link-links {
-        flex-direction: column;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
         gap: 12px;
     }
 
-    .hot-link-item {
-        flex: 1 1 100%;
-        min-width: 0;
-    }
+
 
     .footer-content-row {
         padding: 0;
