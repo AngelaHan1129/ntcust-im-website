@@ -318,7 +318,7 @@ body {
 }
 
 .home-panel .hot-link {
-    flex: 0 0 400px;
+    flex: 1;
 }
 
 .noticees {
