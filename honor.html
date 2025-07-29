@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>國立臺中科技大學資訊管理系</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --color-primary: #FDD835;
+      --color-secondary: #FFF176;
+      --color-accent: #B65D1D;
+      --color-dark: #212121;
+    }
+
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+    }
+
+    .honors-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    .year-selector {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .year-selector button {
+      padding: 8px 20px;
+      border-radius: 18px;
+      background: var(--color-primary);
+      border: none;
+      color: var(--color-dark);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px rgba(33, 33, 33, 0.06);
+    }
+
+    .year-selector button.active,
+    .year-selector button:hover {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    .honor-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      justify-content: start;
+    }
+
+    .honor-card {
+      width: 550px;
+      background: #fffde4;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(33, 33, 33, 0.10);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s;
+      border: 2px solid var(--color-primary);
+    }
+
+    .honor-card:hover {
+      box-shadow: 0 4px 28px rgba(182, 93, 29, 0.15);
+    }
+
+    .honor-image {
+      width: 100%;
+      min-height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      border: 3px solid var(--color-secondary);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
+    .event-title {
+      font-size: 1.07rem;
+      font-weight: 600;
+      color: var(--color-dark);
+    }
+
+    .award-badge {
+      border-radius: 18px;
+      padding: 5px 20px;
+      font-weight: 700;
+      margin-left: 12px;
+      background: linear-gradient(90deg, var(--color-primary) 65%, var(--color-secondary) 100%);
+      color: var(--color-accent);
+      box-shadow: 0 2px 6px rgba(253, 216, 53, 0.14);
+      letter-spacing: 0.5px;
+      border: 1.5px solid var(--color-accent);
+    }
+
+    .award-badge.gold {
+      background: linear-gradient(90deg, var(--color-primary) 65%, var(--color-secondary) 100%);
+      color: var(--color-accent);
+      border: 2px solid var(--color-accent);
+    }
+
+    .card-content {
+      font-size: 0.98rem;
+      color: var(--color-dark);
+      line-height: 1.6;
+      width: 100%;
+    }
+
+    .pagination {
+      margin: 30px 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pagination button {
+      background-color: var(--color-primary);
+      color: var(--color-dark);
+      border: 1.5px solid var(--color-accent);
+      padding: 6px 16px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .pagination button:hover,
+    .pagination button.active {
+      background-color: var(--color-accent);
+      color: white;
+    }
+
+    @media (max-width:1200px) {
+      .honor-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 22px;
+        justify-content: center;
+      }
+
+      .honor-card {
+        width: 450px;
+      }
+    }
+
+    @media (max-width:900px) {
+      .honor-card {
+        width: 650px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="containers">
+      <button class="menu-toggle" aria-label="開關選單">
+        ☰
+      </button>
+      <div class="link-bar">
+        <a href="https://www.nutc.edu.tw/" target="_blank">學校首頁</a>
+        <a href="https://coinformation.nutc.edu.tw/" target="_blank">學院首頁</a>
+      </div>
+      <div class="header-top">
+        <div class="logo-area">
+          <img src="imlogo.png" alt="Logo左" />
+          <img src="title_2.png" alt="Logo右" />
+        </div>
+        <nav class="nav-area">
+          <ul class="nav">
+            <li>
+              <div>關於系所</div>
+              <div>About</div>
+            </li>
+            <li>
+              <div>師資與研究</div>
+              <div>Research</div>
+            </li>
+            <li>
+              <div>課程介紹</div>
+              <div>Courses</div>
+            </li>
+            <li>
+              <div>系所辦法</div>
+              <div>Law</div>
+            </li>
+            <li>
+              <div>招生資訊</div>
+              <div>Admissions</div>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="search-area">
+          <input type="text" placeholder="搜尋 Search..." />
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" width="24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 
+                0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 
+                0 0 0 10.607 10.607Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="header-bottom department">
+      <div class="containers">
+        <ul>
+          <li>
+            <img src="department1.png" alt="系所1" />
+            <div>資訊管理科</div>
+          </li>
+          <li>
+            <img src="department1.png" alt="系所2" />
+            <div>資訊應用菁英班</div>
+          </li>
+          <li>
+            <img src="department1.png" alt="系所3" />
+            <div>資訊管理系</div>
+          </li>
+          <li>
+            <img src="department1.png" alt="系所4" />
+            <div>碩士班</div>
+          </li>
+          <li>
+            <img src="department1.png" alt="系所5" />
+            <div>碩士在職專班</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="honors-section">
+    <div class="year-selector">
+      <button data-year="114">114學年度</button>
+      <button class="active" data-year="113">113學年度</button>
+    </div>
+    <div class="honor-cards" id="honorCards">
+      <!-- 113學年度 -->
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <div class="honor-card" data-year="113">
+        <img class="honor-image" src="image1.jpg" alt="崇越行銷大賞AI應用競賽獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">崇越行銷大賞：AI應用競賽</span>
+          <span class="award-badge gold">特優</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：AI應用創意組</div>
+          <div>參與學生：林瑞庭、謝瀚陞、邱馨毅、牛哲、鍾孟儒</div>
+          <div>指導老師：黃天麒、曾建維</div>
+        </div>
+      </div>
+      <!-- 114學年度 -->
+      <div class="honor-card" data-year="114" style="display:none;">
+        <img class="honor-image" src="image2.jpg" alt="114學年度某活動獲獎圖片">
+        <div class="card-header">
+          <span class="event-title">資訊管理系程式設計競賽</span>
+          <span class="award-badge gold">第一名</span>
+        </div>
+        <div class="card-content">
+          <div>競賽項目：程式開發</div>
+          <div>參與學生：張三、李四、王五</div>
+          <div>指導老師：陳老師、林老師</div>
+        </div>
+      </div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+  <div class="footer">
+    <div class="footer-content-row">
+      <div class="footer-info-columns">
+        <div class="footer-contact-info">
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21c1.21.49 2.53.76 3.9.76a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1A17.83 17.83 0 0 1 4 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.37.27 2.69.76 3.9a1 1 0 0 1-.2 1.11l-2.44 2.44z" />
+            </svg>
+            電話：(04)2219-6310
+          </p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M21 16V8a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8 10h8v2H8z" />
+            </svg>
+            傳真：(04)2219-6311
+          </p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M22 4H2v16h20V4zm-2 10h-4v2h-4v-2H6v-4h4V8h4v2h4v4z" />
+            </svg>
+            郵箱：im10@nutc.edu.tw
+          </p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM12 11a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+            </svg>
+            地址：404 台中巿三民路三段129號(資訊館四樓)
+          </p>
+        </div>
+        <div class="footer-main-info">
+          <p><img src="school.png" alt="國立臺中科技大學">國立臺中科技大學</p>
+          <p><img src="nutcios.png" alt="資訊與流通學院">資訊與流通學院</p>
+        </div>
+        <div class="footer-contact-info">
+          <div class="footer-group">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+              </svg>
+              資管科學會</p>
+          </div>
+          <div class="footer-group">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+              </svg>
+              資管系學會</p>
+          </div>
+          <div class="footer-group">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M20.9 2H3.1A1.1 1.1 0 0 0 2 3.1v17.8A1.1 1.1 0 0 0 3.1 22h9.58v-7.75h-2.6v-3h2.6V9a3.64 3.64 0 0 1 3.88-4a20 20 0 0 1 2.33.12v2.7H17.3c-1.26 0-1.5.6-1.5 1.47v1.93h3l-.39 3H15.8V22h5.1a1.1 1.1 0 0 0 1.1-1.1V3.1A1.1 1.1 0 0 0 20.9 2" />
+              </svg>
+              系友臉書社團</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>COPYRIGHT © 2025 Department of Information Management Of NUTC.</p>
+      <p>資訊安全及隱私權政策</p>
+    </div>
+    <div class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      <svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 2048 2048">
+        <path fill="currentColor" d="m1453 499l-90 90l-338-337l-1 1796H896l1-1799l-340 340l-90-90L960 6z" />
+      </svg>
+      <p>返回頂部</p>
+    </div>
+  </div>
+
+
+  <script>
+    const buttons = document.querySelectorAll('.year-selector button');
+    const honorCards = document.querySelectorAll('.honor-card');
+    const paginationContainer = document.getElementById('pagination');
+    const cardsPerPage = 8;
+
+    function paginateCards(year) {
+      const allCards = [...document.querySelectorAll(`.honor-card[data-year="${year}"]`)];
+      const totalPages = Math.ceil(allCards.length / cardsPerPage);
+      let currentPage = 1;
+
+      function renderPage(page) {
+        currentPage = page;
+        allCards.forEach((card, index) => {
+          const start = (page - 1) * cardsPerPage;
+          const end = page * cardsPerPage;
+          card.style.display = (index >= start && index < end) ? 'flex' : 'none';
+        });
+
+        renderPaginationControls();
+      }
+
+      function renderPaginationControls() {
+        paginationContainer.innerHTML = '';
+        if (totalPages <= 1) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.innerText = '最前一頁';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.onclick = () => renderPage(1);
+        paginationContainer.appendChild(prevBtn);
+
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement('button');
+          btn.innerText = i;
+          if (i === currentPage) btn.classList.add('active');
+          btn.onclick = () => renderPage(i);
+          paginationContainer.appendChild(btn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.innerText = '最後一頁';
+        nextBtn.onclick = () => renderPage(totalPages);
+        paginationContainer.appendChild(nextBtn);
+      }
+
+      renderPage(currentPage);
+    }
+
+    // 初始載入：設定預設年度
+    const defaultYear = document.querySelector('.year-selector button.active').getAttribute('data-year');
+    paginateCards(defaultYear);
+
+    // 年度切換功能
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const year = button.getAttribute('data-year');
+        paginateCards(year);
+      });
+    });
+
+    // 行動選單切換
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector(".menu-toggle");
+      const nav = document.querySelector(".nav-area");
+      toggle.addEventListener("click", function () {
+        nav.classList.toggle("active");
+      });
+    });
+  </script>
+
+</body>
+
+</html>
