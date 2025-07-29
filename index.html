@@ -10,17 +10,19 @@
 
 <body>
   <header>
-    <div class="link-bar">
-      <a href="https://www.nutc.edu.tw/" target="_blank">學校首頁</a>
-      <a href="https://coinformation.nutc.edu.tw/" target="_blank">學院首頁</a>
-    </div>
     <div class="containers">
+      <button class="menu-toggle" aria-label="開關選單">
+        ☰
+      </button>
+      <div class="link-bar">
+        <a href="https://www.nutc.edu.tw/" target="_blank">學校首頁</a>
+        <a href="https://coinformation.nutc.edu.tw/" target="_blank">學院首頁</a>
+      </div>
       <div class="header-top">
         <div class="logo-area">
           <img src="imlogo.png" alt="Logo左" />
           <img src="title_2.png" alt="Logo右" />
         </div>
-
         <nav class="nav-area">
           <ul class="nav">
             <li>
@@ -278,7 +280,14 @@
         <div class="department-video-list">
           <div class="department-video-item">
             <video src="sample1.mp4" controls preload="none" poster="cover1.jpg"></video>
-            <div class="department-video-caption">資管系簡介 (Introduction to MIS)</div>
+            <div class="department-video-content">
+              <div class="department-video-caption">資管系簡介 (Introduction to MIS)</div><svg
+                xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 1024 1024">
+                <path fill="currentColor"
+                  d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312z">
+                </path>
+              </svg>
+            </div>
           </div>
           <div class="department-video-item"><iframe allowfullscreen="" frameborder="0"
               src="https://www.youtube.com/embed/XXXXX"></iframe>
@@ -293,7 +302,14 @@
           </div>
           <div class="department-video-item">
             <iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe>
-            <div class="department-video-caption">學生專題成果展示</div>
+            <div class="department-video-content">
+              <div class="department-video-caption">學生專題成果展示</div><svg xmlns="http://www.w3.org/2000/svg" width="34"
+                height="34" viewBox="0 0 1024 1024">
+                <path fill="currentColor"
+                  d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312z">
+                </path>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -369,8 +385,8 @@
           </p>
         </div>
         <div class="footer-main-info">
-          <p>國立臺中科技大學</p>
-          <p>資訊與流通學院</p>
+          <p><img src="school.png" alt="國立臺中科技大學">國立臺中科技大學</p>
+          <p><img src="nutcios.png" alt="資訊與流通學院">資訊與流通學院</p>
         </div>
         <div class="footer-contact-info">
           <div class="footer-group">
@@ -410,6 +426,14 @@
   </div>
 
   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".nav-area");
+
+    toggle.addEventListener("click", function () {
+      nav.classList.toggle("active");
+    });
+  });
     const slides = document.querySelectorAll(".carousel-slide");
     let currentIndex = 0;
     function showSlide(index) {
