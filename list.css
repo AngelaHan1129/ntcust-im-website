@@ -16256,7 +16256,7 @@ h4,
 }
 .module-cgmenu .mb,
 .md_style1 .mb {
-  padding: 10px;
+  padding: 0px;
 }
 .module-memmenu .mb,
 .module-cgmenu .mb {
@@ -17358,37 +17358,57 @@ div.hdsearch {
 .page_mobilecgmolist .listBS a {
   width: 100%;
 }
-.page_mobileselfpg #Dyn_2_1 .listBS,
-.page_mobilecgmolist #Dyn_2_1 .listBS,
-.page_mobileselfpg #Dyn_2_2 .listBS,
-.page_mobilecgmolist #Dyn_2_2 .listBS,
-.page_mobileselfpg #Dyn_2_3 .listBS,
-.page_mobilecgmolist #Dyn_2_3 .listBS {
+.page_mobileselfpg #Dyn_2_1 #pageptlist listBS,
+.page_mobilecgmolist #Dyn_2_1 #pageptlist .listBS,
+.page_mobileselfpg #Dyn_2_2 #pageptlist .listBS,
+.page_mobilecgmolist #Dyn_2_2 #pageptlist .listBS,
+.page_mobileselfpg #Dyn_2_3 #pageptlist .listBS,
+.page_mobilecgmolist #Dyn_2_3 #pageptlist .listBS {
   padding: 10px 10px;
 }
-.page_mobileselfpg #Dyn_2_1 .listBS:nth-child(odd),
-.page_mobilecgmolist #Dyn_2_1 .listBS:nth-child(odd),
-.page_mobileselfpg #Dyn_2_2 .listBS:nth-child(odd),
-.page_mobilecgmolist #Dyn_2_2 .listBS:nth-child(odd),
-.page_mobileselfpg #Dyn_2_3 .listBS:nth-child(odd),
-.page_mobilecgmolist #Dyn_2_3 .listBS:nth-child(odd) {
+.page_mobileselfpg #Dyn_2_1 #pageptlist .listBS:nth-child(odd),
+.page_mobilecgmolist #Dyn_2_1  #pageptlist .listBS:nth-child(odd),
+.page_mobileselfpg #Dyn_2_2  #pageptlist .listBS:nth-child(odd),
+.page_mobilecgmolist #Dyn_2_2  #pageptlist .listBS:nth-child(odd),
+.page_mobileselfpg #Dyn_2_3  #pageptlist .listBS:nth-child(odd),
+.page_mobilecgmolist #Dyn_2_3  #pageptlist .listBS:nth-child(odd) {
   background-color: #f4f0eb;
 }
-.page_mobileselfpg #Dyn_2_1 .listBa:nth-child(even),
-.page_mobilecgmolist #Dyn_2_1 .listBa:nth-child(even),
-.page_mobileselfpg #Dyn_2_2 .listBa:nth-child(even),
-.page_mobilecgmolist #Dyn_2_2 .listBa:nth-child(even),
-.page_mobileselfpg #Dyn_2_3 .listBa:nth-child(even),
-.page_mobilecgmolist #Dyn_2_3 .listBa:nth-child(even) {
+.page_mobileselfpg #Dyn_2_1 #pageptlist .listBa:nth-child(even),
+.page_mobilecgmolist #Dyn_2_1 #pageptlist .listBa:nth-child(even),
+.page_mobileselfpg #Dyn_2_2 #pageptlist .listBa:nth-child(even),
+.page_mobilecgmolist #Dyn_2_2 #pageptlist .listBa:nth-child(even),
+.page_mobileselfpg #Dyn_2_3 #pageptlist .listBa:nth-child(even),
+.page_mobilecgmolist #Dyn_2_3 #pageptlist .listBa:nth-child(even) {
   background-color: #efe7dc;
 }
-.page_mobileselfpg #Dyn_2_1 .listBS:hover,
-.page_mobilecgmolist #Dyn_2_1 .listBS:hover,
-.page_mobileselfpg #Dyn_2_2 .listBS:hover,
-.page_mobilecgmolist #Dyn_2_2 .listBS:hover,
-.page_mobileselfpg #Dyn_2_3 .listBS:hover,
-.page_mobilecgmolist #Dyn_2_3 .listBS:hover {
+.page_mobileselfpg #Dyn_2_1  #pageptlist .listBS:hover,
+.page_mobilecgmolist #Dyn_2_1  #pageptlist .listBS:hover,
+.page_mobileselfpg #Dyn_2_2  #pageptlist .listBS:hover,
+.page_mobilecgmolist #Dyn_2_2  #pageptlist .listBS:hover,
+.page_mobileselfpg #Dyn_2_3  #pageptlist .listBS:hover,
+.page_mobilecgmolist #Dyn_2_3  #pageptlist .listBS:hover {
   background-color: #fffbd4;
+}
+.page_mobileselfpg #Dyn_2_1 .mouter .mb .listBS > div:nth-child(odd),
+.page_mobilecgmolist #Dyn_2_1  .mouter .mb .listBS > div:nth-child(odd),
+.page_mobileselfpg #Dyn_2_2  .mouter .mb .listBS > div:nth-child(odd),
+.page_mobilecgmolist #Dyn_2_2  .mouter .mb .listBS > div:nth-child(odd),
+.page_mobileselfpg #Dyn_2_3  .mouter .mb .listBS > div:nth-child(odd),
+.page_mobilecgmolist #Dyn_2_3  .mouter .mb .listBS > div:nth-child(odd) {
+  background-color: #f4f0eb;
+  padding: 10px;
+  border-radius: 10px;
+}
+.page_mobileselfpg #Dyn_2_1 .mouter .mb .listBS > div:nth-child(even),
+.page_mobilecgmolist #Dyn_2_1 .mouter .mb .listBS > div:nth-child(even),
+.page_mobileselfpg #Dyn_2_2 .mouter .mb .listBS > div:nth-child(even),
+.page_mobilecgmolist #Dyn_2_2 .mouter .mb .listBS > div:nth-child(even),
+.page_mobileselfpg #Dyn_2_3 .mouter .mb .listBS > div:nth-child(even),
+.page_mobilecgmolist #Dyn_2_3 .mouter .mb .listBS > div:nth-child(even) {
+  background-color: #efe7dc;
+  padding: 10px;
+    border-radius: 10px;
 }
 .page_mobileselfpg .mpgbar nav,
 .page_mobilecgmolist .mpgbar nav {
@@ -17672,4 +17692,13 @@ div.hdsearch {
   padding: 0px;
   background: none;
   border: none;
+}
+.page_mobileselfpg ul.nav.nav-tabs > li > a,
+.page_mobileselfpg ul.nav.nav-tabs > li > a:visited{
+  border-radius: 20px !important;
+}
+.page_mobileselfpg .module-favlist .listBS .d-item {
+  background-color: #FFF5CA;
+  padding: 10px;
+  border-radius: 10px;
 }
