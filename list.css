@@ -7102,6 +7102,7 @@ body {
   padding-left: 10px;
 }
 [class*="v-i"] .d-img img {
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -17390,27 +17391,35 @@ div.hdsearch {
 .page_mobilecgmolist #Dyn_2_3  #pageptlist .listBS:hover {
   background-color: #fffbd4;
 }
-.page_mobileselfpg #Dyn_2_1 .mouter .mb .listBS > div:nth-child(odd),
-.page_mobilecgmolist #Dyn_2_1  .mouter .mb .listBS > div:nth-child(odd),
-.page_mobileselfpg #Dyn_2_2  .mouter .mb .listBS > div:nth-child(odd),
-.page_mobilecgmolist #Dyn_2_2  .mouter .mb .listBS > div:nth-child(odd),
-.page_mobileselfpg #Dyn_2_3  .mouter .mb .listBS > div:nth-child(odd),
-.page_mobilecgmolist #Dyn_2_3  .mouter .mb .listBS > div:nth-child(odd) {
-  background-color: #f4f0eb;
-  padding: 10px;
-  border-radius: 10px;
-}
-.page_mobileselfpg #Dyn_2_1 .mouter .mb .listBS > div:nth-child(even),
-.page_mobilecgmolist #Dyn_2_1 .mouter .mb .listBS > div:nth-child(even),
-.page_mobileselfpg #Dyn_2_2 .mouter .mb .listBS > div:nth-child(even),
-.page_mobilecgmolist #Dyn_2_2 .mouter .mb .listBS > div:nth-child(even),
-.page_mobileselfpg #Dyn_2_3 .mouter .mb .listBS > div:nth-child(even),
-.page_mobilecgmolist #Dyn_2_3 .mouter .mb .listBS > div:nth-child(even) {
-  background-color: #efe7dc;
+.page_mobileselfpg #Dyn_2_1 .mouter .mb .listBS > div,
+.page_mobilecgmolist #Dyn_2_1 .mouter .mb .listBS > div,
+.page_mobileselfpg #Dyn_2_2 .mouter .mb .listBS > div,
+.page_mobilecgmolist #Dyn_2_2 .mouter .mb .listBS > div,
+.page_mobileselfpg #Dyn_2_3 .mouter .mb .listBS > div,
+.page_mobilecgmolist #Dyn_2_3 .mouter .mb .listBS > div {
+  background-color: #fffde4;
   padding: 10px;
     border-radius: 10px;
     box-shadow: inset 0 0 0 2px #FDD835;
     border: 5px solid #fff;
+    height: 350px;
+}
+.page_mobileselfpg .mouter .mb img{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+.page_mobileselfpg .mouter .d-txt .mtitle a{
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 4rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.page_mobileselfpg .mouter .d-txt .mdetail .meditor{
+  color: #c0a16b;
 }
 .page_mobileselfpg .mpgbar nav,
 .page_mobilecgmolist .mpgbar nav {
