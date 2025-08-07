@@ -35,7 +35,7 @@
       justify-content: center;
       outline: none;
       cursor: pointer;
-      width: 150px;
+      width: 120px;
       height: 40px;
       background-image: linear-gradient(to top, #f9f1d8 0%, #fff9e1 80%, #fffbea 100%);
       border-radius: 8px;
@@ -110,7 +110,6 @@
     }
 
     .main-container {
-      max-width: 950px;
       margin: -26px auto 28px auto;
       background: #fff;
       border-radius: 22px;
@@ -365,6 +364,7 @@
     .sister-list {
       width: 100%;
       box-sizing: border-box;
+      justify-content: space-evenly;
     }
 
     .alumni-list,
@@ -795,15 +795,14 @@
   <div class="main-container">
     <section class="unique-banner">
       <div class="site-logo-move">
-        <img src="https://im.nutc.edu.tw/var/file/63/1063/img/1434/imlogo.png" alt="系徽" />
         <span style="font-size:1.09em;font-family:'Segoe UI Mono',monospace;font-weight:bold;color:var(--color-accent)">
           資管系 x 實習專區
         </span>
       </div>
     </section>
-    
+
     <!-- 實用資源 -->
-    <div class="section-title">實用資源</div>
+
     <div class="resources-list">
       <button class="resource-button" onclick="location.href='#'">實習資訊</button>
       <button class="resource-button" onclick="location.href='#'">實習前</button>
@@ -812,6 +811,31 @@
       <button class="resource-button" onclick="location.href='#'">實習Q&A</button>
     </div>
 
+    <!-- 媒合會/機會快報 -->
+    <div class="section-title">實習媒合會・機會搶先報</div>
+    <table class="joblist-table">
+      <tr>
+        <th style="width:100px;">標章</th>
+        <th>活動名稱</th>
+        <th>時間</th>
+        <th>地點</th>
+        <th>報名</th>
+      </tr>
+      <tr>
+        <td><span class="job-badge">本月推薦</span></td>
+        <td>資管系 7月實習媒合會</td>
+        <td>2025/07/15</td>
+        <td>資訊大樓三樓</td>
+        <td><a class="result-link" href="#">立即報名</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>業界實作計畫說明會</td>
+        <td>2025/08/04</td>
+        <td>線上 Teams</td>
+        <td><a class="result-link" href="#">參加連結</a></td>
+      </tr>
+    </table>
 
     <div class="section-title">合作實習廠商</div>
     <div class="employer-wall" style="display:flex; flex-wrap: wrap; gap:16px; align-items:center;">
@@ -839,9 +863,9 @@
       <a href="https://www.acer.com.tw/" target="_blank" rel="noopener noreferrer">
         <img src="https://images.acer.com/is/content/acer/acer-4" alt="宏碁 Logo" style="height:28px; max-width:90px;" />
       </a>
-
     </div>
-    <div class="section-title">學長姐真實見證</div>
+
+    <div class="section-title">實習回饋</div>
     <div class="testimonial-carousel">
       <div class="testimonial-list" id="testimonial-slider">
         <div class="testimonial-card">
@@ -875,16 +899,16 @@
           </div>
         </div>
       </div>
-      <div class="carousel-dotnav">
+      <!-- <div class="carousel-dotnav">
         <span class="carousel-dot active"></span>
         <span class="carousel-dot"></span>
         <span class="carousel-dot"></span>
-      </div>
+      </div> -->
     </div>
 
     <!-- 成果展示職涯牆 -->
-    <div class="section-title">實習成果展示牆</div>
-    <div class="results-list">
+    <!-- <div class="section-title">實習成果展示牆</div> -->
+    <!-- <div class="results-list">
       <div class="result-row">
         <img
           src="https://upload.wikimedia.org/wikipedia/zh/thumb/8/83/Taiwan_Semiconductor_Manufacturing_Co_logo.svg/1200px-Taiwan_Semiconductor_Manufacturing_Co_logo.svg.png"
@@ -899,34 +923,9 @@
         <span class="result-name">石魚庭</span>｜APP設計股份有限公司 專案助理
         <a class="result-link" href="#">觀看專題影片</a>
       </div>
-    </div>
+    </div> -->
 
 
-    <!-- 媒合會/機會快報 -->
-    <div class="section-title">實習媒合會・機會搶先報</div>
-    <table class="joblist-table">
-      <tr>
-        <th style="width:100px;">標章</th>
-        <th>活動名稱</th>
-        <th>時間</th>
-        <th>地點</th>
-        <th>報名</th>
-      </tr>
-      <tr>
-        <td><span class="job-badge">本月推薦</span></td>
-        <td>資管系 7月實習媒合會</td>
-        <td>2025/07/15</td>
-        <td>資訊大樓三樓</td>
-        <td><a class="result-link" href="#">立即報名</a></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>業界實作計畫說明會</td>
-        <td>2025/08/04</td>
-        <td>線上 Teams</td>
-        <td><a class="result-link" href="#">參加連結</a></td>
-      </tr>
-    </table>
 
     <!-- 統計圖表 -->
     <div class="section-title" style="margin-top:34px;">實習領域分布統計</div>
@@ -969,7 +968,7 @@
       </ul>
     </div>
   </div>
-  <script>
+  <!-- <script>
     const dots = document.querySelectorAll('.carousel-dot');
     const slider = document.getElementById('testimonial-slider');
 
@@ -984,7 +983,7 @@
         dot.classList.add('active');
       });
     });
-  </script>
+  </script> -->
 
 </body>
 
