@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>資管系實習專區｜一己成就職涯</title>
+  <style>
+    :root {
+      --color-primary: #FDD835;
+      --color-accent: #B65D1D;
+      --color-dark: #212121;
+      --color-secondary: #FFF176;
+      --color-bg: #F4F0EB;
+      --color-block: #EFE7DC;
+    }
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      color: var(--color-dark);
+      background: var(--color-bg);
+      margin: 0;
+      padding: 0;
+    }
+    .main-container {
+      max-width: 900px;
+      margin: 32px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(182,93,29,.07);
+      padding: 32px 18px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      color: var(--color-accent);
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+      margin-top: 36px;
+    }
+    .slogan {
+      font-size: 1.12em;
+      color: var(--color-primary);
+      font-weight: bold;
+      margin-bottom: 24px;
+      letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    .slogan::after {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; height: 100%; width: 0;
+      background: linear-gradient(90deg, rgba(253,216,53,0.25) 0%, rgba(253,216,53,0) 90%);
+      z-index: 1;
+      animation: sloganSlide 2.2s cubic-bezier(.45,.04,.55,.94) 0.2s 1;
+      animation-fill-mode: forwards;
+    }
+    @keyframes sloganSlide {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    .testimonial-list {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .testimonial-card {
+      flex: 1 1 300px;
+      min-width: 220px;
+      background: var(--color-block);
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(182,93,29,.10);
+      padding: 14px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      opacity: 0;
+      transform: translateY(30px) scale(0.96);
+      animation: cardFadeIn 1s .2s forwards;
+    }
+    .testimonial-card:nth-child(2) { animation-delay: .6s;}
+    @keyframes cardFadeIn {
+      to { opacity: 1; transform: translateY(0) scale(1);}
+    }
+    .testimonial-card img {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      object-fit: cover;
+    }
+    .testimonial-content { flex: 1; }
+    .testimonial-name { font-weight: bold; color: var(--color-accent); font-size: 1em; margin-bottom: 2px;}
+    .testimonial-quote { color: var(--color-dark); opacity: .85; margin-bottom: 4px;}
+    .testimonial-link { color: var(--color-primary); font-size: 13px; text-decoration: underline; cursor: pointer;}
+
+    .results-list {
+      width: 100%;
+      border-radius: 10px;
+      background: var(--color-bg);
+      margin-bottom: 18px;
+      padding: 12px 14px;
+    }
+    .result-row {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ece0c7;
+      padding: 8px 0;
+      gap: 12px;
+      font-size: 15px;
+      position: relative;
+      background: linear-gradient(90deg, #fff 60%, #fdd83525 100%);
+      animation: stripeAppear 1.2s cubic-bezier(.7,.2,.3,1) forwards;
+      opacity: 0;
+    }
+    .result-row:nth-child(1) { animation-delay: .3s; }
+    .result-row:nth-child(2) { animation-delay: .5s; }
+    @keyframes stripeAppear {
+      from { background-position-x: -150px; opacity: 0;}
+      to   { background-position-x: 0;     opacity: 1;}
+    }
+    .result-row:last-child { border-bottom: none;}
+    .result-logo {
+      width: 40px; height: 40px; background:#fff; border-radius:6px; box-shadow:0 0 4px #eee; object-fit:contain;
+      margin-right: 6px;
+    }
+    .result-name { font-weight:bold; color: var(--color-accent);}
+    .result-link {
+      font-size: 13px;
+      color: var(--color-primary);
+      margin-left: auto;
+      text-decoration: underline;
+    }
+
+    .alumni-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .alumni-card {
+      flex: 1 1 220px;
+      background: var(--color-secondary);
+      border-radius:10px;
+      box-shadow: 0 1px 8px rgba(182,93,29,.07);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      will-change: transform;
+      transition: transform .28s cubic-bezier(.45,.02,.6,.98), box-shadow .32s;
+    }
+    .alumni-card:hover {
+      transform: translateY(-6px) scale(1.03) rotate(-1.5deg);
+      box-shadow: 0 10px 32px rgba(182,93,29,0.18);
+    }
+    .alumni-name { font-weight: bold; color: var(--color-accent); margin-bottom: 2px;}
+    .alumni-job { color: var(--color-dark); font-size: 14px;}
+    .alumni-desc {color: #835112; font-size: 14px; opacity: .88;}
+    .alumni-year { font-size: 13px; color: #808080; margin-bottom: 4px;}
+
+    .resources-list { display: flex; flex-wrap: wrap; gap: 16px;}
+    .resource-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--color-primary);
+      color: var(--color-accent);
+      border-radius: 6px;
+      font-weight: bold;
+      font-size:15px;
+      text-decoration: none;
+      box-shadow: 0 1px 2px rgba(182,93,29,.06);
+      transition: background .18s, color .18s;
+      position: relative;
+      overflow: hidden;
+    }
+    .resource-link:hover {
+      background: var(--color-accent);
+      color: #fff;
+    }
+    .resource-link svg { width: 20px; height: 20px; fill: currentColor;}
+    .resource-link:active::before {
+      content: "";
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 0; height: 0;
+      background: rgba(253,216,53,0.45);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+      animation: ripple .4s linear forwards;
+      z-index: 1;
+    }
+    @keyframes ripple {
+      to { width: 160px; height: 160px; opacity: 0; }
+    }
+
+    .joblist-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--color-block);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+    .joblist-table th, .joblist-table td {
+      padding: 8px 6px;
+      font-size: 15px;
+      border-bottom: 1px solid #ece0c7;
+      text-align:left;
+    }
+    .joblist-table th {
+      background: var(--color-secondary);
+      color: var(--color-accent);
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .joblist-table tr:last-child td { border-bottom: none;}
+    .job-badge {
+      display:inline-block;
+      background: var(--color-primary);
+      color: var(--color-accent);
+      font-size: 12px;
+      border-radius: 10px;
+      padding: 2px 10px;
+      margin-right: 4px;
+    }
+
+    .employer-wall {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+    .employer-wall img {
+      height: 28px; width:auto; background:#fff; border-radius:4px; box-shadow:0 0 4px #eee;
+      opacity: 0;
+      transform: scale(0.85);
+      animation: logoPop 0.75s cubic-bezier(.42,.07,.16,1.3) forwards;
+    }
+    .employer-wall img:nth-child(1){animation-delay:.2s;}
+    .employer-wall img:nth-child(2){animation-delay:.4s;}
+    .employer-wall img:nth-child(3){animation-delay:.6s;}
+    .employer-wall img:nth-child(4){animation-delay:.8s;}
+    @keyframes logoPop {
+      to { opacity:1; transform: scale(1);}
+    }
+
+    .stat-block, .sister-block {
+      background: var(--color-block);
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 22px;
+      margin-bottom: 8px;
+    }
+    .stat-title, .sister-title {color: var(--color-accent); font-weight: bold;}
+    .sister-list {display: flex; gap: 18px; flex-wrap: wrap;}
+    .sister-list .school-block {
+      background:var(--color-secondary);
+      border-radius:7px;
+      padding:8px 14px;
+      color: var(--color-dark);
+      font-size:14px;
+      display:flex; align-items:center; gap:8px;
+      margin-bottom:6px;
+    }
+    .sister-list .school-block img {
+      animation: blinkIcon 2.5s infinite alternate;
+    }
+    @keyframes blinkIcon {
+      from { filter: brightness(0.96) drop-shadow(0 0 1px #fdd83555);}
+      to { filter: brightness(1.22) drop-shadow(0 0 7px #fdd835); }
+    }
+
+    /* 響應式 */
+    @media (max-width: 600px) {
+      .main-container { padding: 14px 2vw;}
+      .testimonial-list, .alumni-list, .resources-list, .employer-wall, .sister-list { flex-direction: column; gap: 8px;}
+      .result-row { flex-direction: column; align-items: flex-start;}
+      .alumni-card { min-width: 0;}
+      .results-list { padding: 8px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+
+    <!-- SLOGAN -->
+    <div class="slogan">
+      「用實習連結業界，你的一己成就，就在這裡發光。」
+    </div>
+
+    <!-- 學長姐真實見證 -->
+    <div class="section-title">學長姐真實見證</div>
+    <div class="testimonial-list">
+      <div class="testimonial-card">
+        <img src="avatar1.jpg" alt="學長姐頭像">
+        <div class="testimonial-content">
+          <div class="testimonial-name">林同學｜2024 實習生</div>
+          <div class="testimonial-quote">「進入台積電實習，不只學到技術，還打開國際視野！」</div>
+          <div class="testimonial-link">查看完整分享</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <img src="avatar2.jpg" alt="學長姐頭像">
+        <div class="testimonial-content">
+          <div class="testimonial-name">黃同學｜2023 校友</div>
+          <div class="testimonial-quote">「資管系實習媒合會讓我提早認識職場，找到適合自己的企業。」</div>
+          <div class="testimonial-link">查看完整分享</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 實習成果展示牆 -->
+    <div class="section-title">實習成果展示牆</div>
+    <div class="results-list">
+      <div class="result-row">
+        <img src="tsmc_logo.png" class="result-logo" alt="台積電">
+        <span class="result-name">王小明</span>｜台積電 MIS 實習生（2025）
+        <a class="result-link" href="#">成果簡報檢視</a>
+      </div>
+      <div class="result-row">
+        <img src="appdesign_logo.png" class="result-logo" alt="App Design">
+        <span class="result-name">賴小芳</span>｜APP設計股份有限公司 專案助理
+        <a class="result-link" href="#">觀看專題影片</a>
+      </div>
+    </div>
+
+    <!-- 達人榜/名人堂 -->
+    <div class="section-title">達人榜・優秀學長姐</div>
+    <div class="alumni-list">
+      <div class="alumni-card">
+        <div class="alumni-name">李資萱</div>
+        <div class="alumni-year">2021 畢業</div>
+        <div class="alumni-job">現職：國泰金控數據分析師</div>
+        <div class="alumni-desc">「從系上實習到連續獲正職，是專業與態度帶來改變。」</div>
+      </div>
+      <div class="alumni-card">
+        <div class="alumni-name">王睿翔</div>
+        <div class="alumni-year">2020 畢業</div>
+        <div class="alumni-job">現職：聯發科前端工程師</div>
+        <div class="alumni-desc">「感謝學校引薦產學合作，讓我提前邁入職場！」</div>
+      </div>
+    </div>
+
+    <!-- 實用資源 -->
+    <div class="section-title">實用資源</div>
+    <div class="resources-list">
+      <a href="#" class="resource-link"><svg viewBox="0 0 24 24"><path d="M5 8h14v2H5zm0 4h14v2H5z" /></svg>履歷範本下載</a>
+      <a href="#" class="resource-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>面試Q&A</a>
+      <a href="#" class="resource-link"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>自傳寫作精選</a>
+      <a href="#" class="resource-link"><svg viewBox="0 0 24 24"><path d="M2 12h20"/></svg>一鍵投遞表單</a>
+      <a href="#" class="resource-link"><svg viewBox="0 0 24 24"><polygon points="12,2 2,22 22,22"/></svg>產業適合度測驗</a>
+    </div>
+
+    <!-- 媒合會/機會快報 -->
+    <div class="section-title">實習媒合會・機會搶先報</div>
+    <table class="joblist-table">
+      <tr>
+        <th style="width:100px;">標章</th>
+        <th>活動名稱</th>
+        <th>時間</th>
+        <th>地點</th>
+        <th>報名</th>
+      </tr>
+      <tr>
+        <td><span class="job-badge">本月推薦</span></td>
+        <td>資管系 7月實習媒合會</td>
+        <td>2025/07/15</td>
+        <td>資訊大樓三樓</td>
+        <td><a class="result-link" href="#">立即報名</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>業界實作計畫說明會</td>
+        <td>2025/08/04</td>
+        <td>線上 Teams</td>
+        <td><a class="result-link" href="#">參加連結</a></td>
+      </tr>
+    </table>
+    <div class="stat-block">
+      <div class="stat-title">今年實習廠商領域統計</div>
+      <!-- 可換成圖表元件 -->
+      <div style="margin:8px 0; font-size:15px;">IT/程式開發 12家｜金融 5家｜數據分析 9家｜設計 4家</div>
+    </div>
+    <div class="section-title">合作實習廠商</div>
+    <div class="employer-wall">
+      <img src="tsmc_logo.png" alt="台積電" />
+      <img src="appdesign_logo.png" alt="APP設計股份" />
+      <img src="cat_logo.png" alt="國泰金控" />
+      <img src="asml_logo.png" alt="艾司摩爾" />
+    </div>
+
+    <!-- 實習辦法 -->
+    <div class="section-title">實習辦法</div>
+    <div style="background:var(--color-block); padding:14px; border-radius:7px; color:var(--color-dark); margin-bottom:12px;">
+      <ul>
+        <li>申請資格：本系大三、大四學生；碩士生優先。</li>
+        <li>審查流程：履歷與自傳 → 書面審查 → 面試 → 正式媒合。</li>
+        <li>完整規定、下載專用表格：<a href="#" style="color:var(--color-accent);text-decoration:underline;">點此查看</a></li>
+      </ul>
+    </div>
+
+    <!-- 姊妹校 -->
+    <div class="section-title">姊妹校夥伴</div>
+    <div class="sister-block">
+      <div class="sister-title">國際學術合作專區</div>
+      <div class="sister-list">
+        <div class="school-block"><img src="ntust_logo.png" alt="NTUST" style="height:17px;">國立台灣科技大學</div>
+        <div class="school-block"><img src="uosaka_logo.png" alt="大阪大學" style="height:16px;">日本大阪大學</div>
+        <div class="school-block"><img src="ntu_logo.png" alt="NTU" style="height:17px;">國立台灣大學</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
