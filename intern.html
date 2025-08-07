@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,82 +14,165 @@
       --color-bg: #F4F0EB;
       --color-block: #EFE7DC;
     }
-    html, body { min-width: 0; overflow-x: hidden; }
+
+    html,
+    body {
+      min-width: 0;
+      overflow-x: hidden;
+    }
+
     body {
       font-family: "Zen Kaku Gothic New", 'Segoe UI Mono', monospace, sans-serif;
       color: var(--color-dark);
       background: var(--color-bg);
       margin: 0;
     }
+
+    /* From Uiverse.io by lenfear23 */
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      cursor: pointer;
+      width: 150px;
+      height: 50px;
+      background-image: linear-gradient(to top, #f9f1d8 0%, #fff9e1 80%, #fffbea 100%);
+      border-radius: 30px;
+      border: 1px solid #b69a6a;
+      transition: all 0.2s ease;
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-accent);
+      /* 咖啡色字 */
+      text-shadow: 0 1px #fff8d1;
+    }
+
+    button:hover {
+      box-shadow:
+        0 4px 3px 1px #fffbee,
+        0 6px 8px #dbd0a1,
+        0 -4px 4px #d4cba6,
+        0 -6px 4px #fffef2,
+        inset 0 0 3px 3px #d4cba6;
+    }
+
     .unique-banner {
-      background: linear-gradient(-8deg, var(--color-block) 70%, #ffd600 100%);
-      padding: 36px 0 16px 0;
-      border-radius: 0 0 90px 90px/0 0 70px 90px;
       text-align: center;
       position: relative;
-      overflow:visible;
+      overflow: visible;
+      min-height: 90px;
     }
+
     .svg-wave {
       position: absolute;
-      left: 0; bottom: -1px; width:100%; height: 34px; pointer-events:none;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 34px;
+      pointer-events: none;
     }
+
     .site-logo-move {
-      position: absolute; left:50%; top: 22px; transform:translateX(-50%) scale(1);
-      animation: logoFloat 2.7s infinite alternate cubic-bezier(.97,.01,.13,.97);
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      transform: translateX(-50%) scale(1);
+      animation: logoFloat 2.7s infinite alternate cubic-bezier(.97, .01, .13, .97);
       background: #fff;
       border-radius: 30px;
       box-shadow: 0 2px 16px #ffe082cc;
       padding: 7px 16px;
-      display: flex; align-items: center; gap:10px;
-      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 2;
     }
-    .site-logo-move img {height:36px; max-width:72px;}
+
+    .site-logo-move img {
+      height: 36px;
+      max-width: 80px;
+    }
+
     @keyframes logoFloat {
-      from { transform:translateX(-50%) translateY(0) scale(1);}
-      40% { transform:translateX(-50%) translateY(-11px) scale(1.06);}
-      to   { transform:translateX(-50%) translateY(-7px) scale(1.04);}
+      from {
+        transform: translateX(-50%) translateY(0) scale(1);
+      }
+
+      40% {
+        transform: translateX(-50%) translateY(-11px) scale(1.06);
+      }
+
+      to {
+        transform: translateX(-50%) translateY(-7px) scale(1.04);
+      }
     }
+
     .main-container {
       max-width: 950px;
-      margin: -36px auto 28px auto;
+      margin: -26px auto 28px auto;
       background: #fff;
       border-radius: 22px;
-      box-shadow: 0 6px 38px rgba(182,93,29,.05);
+      box-shadow: 0 6px 38px rgba(182, 93, 29, .05);
       padding: 36px 8vw 38px 8vw;
       position: relative;
       z-index: 1;
       width: 100%;
     }
+
     .slogan {
       font-family: 'Segoe UI Mono', monospace;
       font-size: 1.13em;
       color: var(--color-primary);
       font-weight: bold;
-      margin-bottom: 30px;
+      margin-top: 36px;
+      margin-bottom: 32px;
       letter-spacing: .18em;
       border-left: 7px double var(--color-accent);
       border-radius: 0 18px 18px 0;
-      padding: 8px 0 8px 20px;
+      padding: 18px 0 18px 26px;
       background: linear-gradient(90deg, #fff9c470 80%, var(--color-bg) 98%);
       box-shadow: 0 1px 6px #fffde72f;
       overflow: hidden;
       position: relative;
       opacity: 0;
-      animation: fadeInSlogan 1.6s .3s both;
+      min-height: 32px;
+      z-index: 3;
+      animation: fadeInSlogan 1.7s .36s both;
     }
-    @keyframes fadeInSlogan {to{opacity:1;}}
+
+    @keyframes fadeInSlogan {
+      to {
+        opacity: 1;
+      }
+    }
 
     .icon-shalu {
-      margin-left:12px;
-      width:24px; height:24px; vertical-align:middle;
+      margin-left: 10px;
+      width: 23px;
+      height: 23px;
+      vertical-align: middle;
       filter: drop-shadow(0 2px 3px #ffed7060);
       animation: iconShake 2.5s infinite alternate;
     }
+
     @keyframes iconShake {
-      0% { transform: rotate(0);}
-      30% { transform: rotate(-8deg);}
-      60% {transform: rotate(8deg);}
-      100% {transform: rotate(-4deg);}
+      0% {
+        transform: rotate(0);
+      }
+
+      30% {
+        transform: rotate(-8deg);
+      }
+
+      60% {
+        transform: rotate(8deg);
+      }
+
+      100% {
+        transform: rotate(-4deg);
+      }
     }
 
     .section-title {
@@ -97,259 +181,673 @@
       font-weight: bold;
       margin-bottom: 14px;
       margin-top: 38px;
-      position:relative;
-      padding-left:10px;
+      position: relative;
+      padding-left: 10px;
       letter-spacing: 1.6px;
-      z-index:99;
+      z-index: 99;
     }
+
     .section-title::before {
-      content:"";
-      display:block;
-      position:absolute;
-      left:0; top:7px;
-      width:7px; height:24px;
-      background: linear-gradient(180deg,var(--color-primary) 60%, var(--color-accent) 100%);
-      border-radius:8px;
-      z-index:-1;
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 7px;
+      height: 24px;
+      background: linear-gradient(180deg, var(--color-primary) 60%, var(--color-accent) 100%);
+      border-radius: 8px;
+      z-index: -1;
     }
 
-    /* 故事輪播 */
-    .testimonial-carousel {overflow:hidden; max-width: 100%; margin-bottom: 14px;}
+    /* 容器設定 */
+    .testimonial-carousel {
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 1rem 0;
+    }
+
+    /* testimonial 列表 */
     .testimonial-list {
-      display: flex;
-      gap: 0;
-      overflow: hidden;
-      flex-wrap: nowrap;
-      transition: transform 0.7s cubic-bezier(.44,.12,.37,1.15);
-      will-change: transform;
-      max-width: 100%;
+      display: inline-flex;
+      gap: 1rem;
+      padding-left: 1rem;
     }
-    .testimonial-card {
-      min-width: 320px;
-      max-width: 93vw;
-      box-sizing: border-box;
-      margin-right: 24px;
-      background: var(--color-block);
-      border-radius: 20px 70px 18px 24px/12px 40px 18px 40px;
-      box-shadow: 0 2px 18px #ffefcf13;
-      padding: 18px 22px 14px 22px;
-      display: flex; align-items: flex-start; gap: 10px;
-      flex-shrink: 0;
-      animation: cardBumpIn 1s;
-      position:relative;
-    }
-    @keyframes cardBumpIn {
-      from{ opacity:0; transform: translateY(40px) scale(.92);}
-      to{ opacity:1; transform: translateY(0) scale(1);}
-    }
-    .testimonial-card img {
-      width: 54px; height: 54px; border-radius: 999px;
-      object-fit: cover;
-      background:#fff;
-      border: 2.5px solid var(--color-primary);
-      max-width:54px;
-    }
-    .testimonial-name { font-weight: bold; color: var(--color-accent); font-size: 1.07em; margin-bottom: 4px;}
-    .testimonial-quote {
-      color: var(--color-dark); opacity: .9; line-height: 1.5;
-      margin-bottom: 8px; font-style: italic; font-family:'Segoe UI Mono',monospace;
-    }
-    .testimonial-link {
-      color: var(--color-primary); font-size: 13px; text-decoration: underline; cursor: pointer; font-weight: bold;
-    }
-    .carousel-dotnav {text-align:center; margin:2px 0;}
-    .carousel-dot {
-      display:inline-block;
-      width:10px; height:10px;
-      margin:0 4px;
-      background: var(--color-accent);
-      border-radius:50%;
-      opacity:.3;
-      transition:all .25s;
-      cursor:pointer;
-    }
-    .carousel-dot.active {opacity:.83; background:var(--color-primary);}
 
-    /* 滿版容器 RWD */
-    .alumni-list, .resources-list, .results-list, .employer-wall, .sister-list {width:100%;box-sizing:border-box;}
-    .alumni-list, .resources-list, .employer-wall, .sister-list { display: flex; flex-wrap: wrap; gap: 16px;}
-    /* 卡片或圖片間隙 */
+    /* testimonial 卡片樣式 */
+    .testimonial-card {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      width: 300px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* 頭像圖片 */
+    .testimonial-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    /* 姓名與身分 */
+    .testimonial-name {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* 引言內容 */
+    .testimonial-quote {
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+
+    /* 超連結樣式 */
+    .testimonial-link {
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    /* dot 導覽 */
+    .carousel-dotnav {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .carousel-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 4px;
+      background-color: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-dot.active {
+      background-color: #333;
+    }
+
+    /* 響應式設定 */
+    @media (max-width: 768px) {
+      .testimonial-card {
+        width: 80%;
+      }
+    }
+
+    @keyframes cardBumpIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(.92);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .testimonial-card img {
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      object-fit: cover;
+      background: #fff;
+      border: 2.5px solid var(--color-primary);
+      max-width: 54px;
+    }
+
+    .testimonial-name {
+      font-weight: bold;
+      color: var(--color-accent);
+      font-size: 1.07em;
+      margin-bottom: 4px;
+    }
+
+    .testimonial-quote {
+      color: var(--color-dark);
+      opacity: .9;
+      line-height: 1.5;
+      margin-bottom: 8px;
+      font-style: italic;
+      font-family: 'Segoe UI Mono', monospace;
+    }
+
+    .testimonial-link {
+      color: var(--color-primary);
+      font-size: 13px;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .carousel-dotnav {
+      text-align: center;
+      margin: 2px 0;
+    }
+
+    .carousel-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 4px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      opacity: .3;
+      transition: all .25s;
+      cursor: pointer;
+    }
+
+    .carousel-dot.active {
+      opacity: .83;
+      background: var(--color-primary);
+    }
+
+    .alumni-list,
+    .resources-list,
+    .results-list,
+    .employer-wall,
+    .sister-list {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .alumni-list,
+    .resources-list,
+    .employer-wall,
+    .sister-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
     .alumni-card,
     .testimonial-card,
-    .resource-link { box-sizing:border-box; }
+    .resource-link {
+      box-sizing: border-box;
+    }
 
-    /* 實習成果動畫+職涯牆 */
     .results-list {
-      border-radius: 10px; background: var(--color-bg);
-      margin-bottom: 18px; padding: 13px 16px 7px 16px;overflow-x:auto;
+      border-radius: 10px;
+      background: var(--color-bg);
+      margin-bottom: 18px;
+      padding: 13px 16px 7px 16px;
+      overflow-x: auto;
     }
+
     .result-row {
-      display: flex; align-items: center; border-bottom: 1px solid #ece0c7;
-      padding: 10px 0 6px 0; gap: 15px; font-size: 15px;
-      position: relative; background: linear-gradient(96deg, #fff 75%, #fdd83512 100%);
-      opacity:.7; transform:scale(.93) translateY(23px);
-      animation: rowJumpIn .95s cubic-bezier(.4,.2,.37,1.14) forwards;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ece0c7;
+      padding: 10px 0 6px 0;
+      gap: 15px;
+      font-size: 15px;
+      position: relative;
+      background: linear-gradient(96deg, #fff 75%, #fdd83512 100%);
+      opacity: .7;
+      transform: scale(.93) translateY(23px);
+      animation: rowJumpIn .95s cubic-bezier(.4, .2, .37, 1.14) forwards;
     }
-    .result-row:nth-child(1){animation-delay:.22s;}
-    .result-row:nth-child(2){animation-delay:.63s;}
-    @keyframes rowJumpIn{
-      70%{ opacity:1;transform:scale(1.06) translateY(-4px);}
-      to { opacity:1; transform:scale(1) translateY(0);}
+
+    .result-row:nth-child(1) {
+      animation-delay: .22s;
     }
-    .result-row:last-child { border-bottom: none;}
-    .result-logo { width: 40px; height: 40px; background:#fff; border-radius:7px; box-shadow:0 0 4px #fffdf3; object-fit:contain; margin-right: 6px; max-width:40px;}
-    .result-name { font-weight:bold; color: var(--color-accent);}
-    .result-link { font-size: 13px; color: var(--color-primary);margin-left: auto;text-decoration: underline;}
+
+    .result-row:nth-child(2) {
+      animation-delay: .63s;
+    }
+
+    @keyframes rowJumpIn {
+      70% {
+        opacity: 1;
+        transform: scale(1.06) translateY(-4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .result-row:last-child {
+      border-bottom: none;
+    }
+
+    .result-logo {
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      border-radius: 7px;
+      box-shadow: 0 0 4px #fffdf3;
+      object-fit: contain;
+      margin-right: 6px;
+      max-width: 40px;
+    }
+
+    .result-name {
+      font-weight: bold;
+      color: var(--color-accent);
+    }
+
+    .result-link {
+      font-size: 13px;
+      color: var(--color-dark);
+      margin-left: auto;
+      text-decoration: underline;
+    }
 
     .alumni-card {
-      flex: 1 1 260px; min-width: 175px;
-      background: linear-gradient(100deg,#fff9e6 60%,#fde072 120%);
-      border-radius:17px; box-shadow: 0 1px 8px rgba(182,93,29,.07);
-      padding: 14px 19px 12px 19px; position:relative; overflow:visible;
-      will-change:transform; transition:transform .33s cubic-bezier(.45,.02,.6,.98),box-shadow .32s;
-      animation: alumnibump .65s cubic-bezier(.23,.65,.72,.9) both;
+      flex: 1 1 260px;
+      min-width: 175px;
+      background: #daeffb;
+      border-radius: 17px;
+      box-shadow: 0 1px 8px rgba(182, 93, 29, .07);
+      padding: 14px 19px 12px 19px;
+      position: relative;
+      overflow: visible;
+      will-change: transform;
+      transition: transform .33s cubic-bezier(.45, .02, .6, .98), box-shadow .32s;
+      animation: alumnibump .65s cubic-bezier(.23, .65, .72, .9) both;
     }
+
     .alumni-card:hover {
       transform: translateY(-10px) rotate(-2deg) scale(1.03);
-      box-shadow: 0 12px 26px rgba(253,216,53,0.22);
+      box-shadow: 0 12px 26px rgba(253, 216, 53, 0.22);
     }
-    @keyframes alumnibump{
-      from{transform:scale(.96) translateY(30px);opacity:.36;}
-      to{transform:scale(1) translateY(0);opacity:1;}
+
+    @keyframes alumnibump {
+      from {
+        transform: scale(.96) translateY(30px);
+        opacity: .36;
+      }
+
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
     }
+
     .alumni-card::after {
-      content: ""; position: absolute; right: -10px; bottom: -7px;
-      width: 55px; height: 20px;
-      background: linear-gradient(110deg,var(--color-primary),#fff6bc);
+      content: "";
+      position: absolute;
+      right: -10px;
+      bottom: -7px;
+      width: 55px;
+      height: 20px;
+      background: linear-gradient(110deg, var(--color-primary), #fff6bc);
       border-radius: 30px 18px 20px 0;
-      opacity: .26; z-index: 2;
+      opacity: .26;
+      z-index: 2;
     }
-    .alumni-name { font-weight: bold; color: var(--color-accent); margin-bottom: 1px;}
-    .alumni-year { font-size: 13px; color: #808080; margin-bottom: 3px;}
-    .alumni-job { color: var(--color-dark); font-size: 14px; }
-    .alumni-desc { color: #8e5413; font-size: 14px; opacity:.88;}
+
+    .alumni-name {
+      font-weight: bold;
+      color: var(--color-accent);
+      margin-bottom: 1px;
+    }
+
+    .alumni-year {
+      font-size: 13px;
+      color: #808080;
+      margin-bottom: 3px;
+    }
+
+    .alumni-job {
+      color: var(--color-dark);
+      font-size: 14px;
+    }
+
+    .alumni-desc {
+      color: #8e5413;
+      font-size: 14px;
+      opacity: .88;
+    }
 
     .resource-link {
-      display: flex; align-items: center; gap: 8px; padding: 10px 18px;
-      background: var(--color-primary); color: var(--color-accent);
-      border-radius: 6px; font-weight: bold; font-size:15px;
-      text-decoration: none; box-shadow: 0 1px 2px rgba(182,93,29,.09);
-      transition: background .16s, color .16s,box-shadow .18s;
-      position: relative; overflow: hidden;
-      font-family:'Segoe UI Mono',monospace;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--color-primary);
+      color: var(--color-accent);
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 15px;
+      text-decoration: none;
+      box-shadow: 0 1px 2px rgba(182, 93, 29, .09);
+      transition: background .16s, color .16s, box-shadow .18s;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Segoe UI Mono', monospace;
       min-width: 160px;
     }
-    .resource-link svg { width: 19px; height: 19px; fill:currentColor;}
-    .resource-link:hover { background: var(--color-accent); color: #fff; box-shadow: 0 5px 10px #ffa72629;}
-    .resource-link:active::before {
-      content: ""; position: absolute;
-      left: 50%; top: 50%; width: 0; height: 0;
-      background: rgba(253,216,53,0.35);
-      border-radius: 50%; transform: translate(-50%,-50%);
-      animation: ripple .5s linear forwards; z-index: 1;
+
+    .resource-link svg {
+      width: 19px;
+      height: 19px;
+      fill: currentColor;
     }
-    @keyframes ripple{ to{width:120px;height:120px;opacity:0;} }
+
+    .resource-link:hover {
+      background: var(--color-accent);
+      color: #fff;
+      box-shadow: 0 5px 10px #ffa72629;
+    }
+
+    .resource-link:active::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(253, 216, 53, 0.35);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: ripple .5s linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes ripple {
+      to {
+        width: 120px;
+        height: 120px;
+        opacity: 0;
+      }
+    }
 
     .joblist-table {
-      width: 100%; border-collapse: collapse; background: var(--color-block);
-      border-radius: 8px; overflow: hidden; margin-bottom: 18px;
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--color-block);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 18px;
     }
-    .joblist-table th, .joblist-table td {
-      padding: 8px 6px; font-size: 15px; border-bottom: 1px solid #ece0c7; text-align:left;
+
+    .joblist-table th,
+    .joblist-table td {
+      padding: 8px 6px;
+      font-size: 15px;
+      border-bottom: 1px solid #ece0c7;
+      text-align: left;
     }
+
     .joblist-table th {
-      background: var(--color-secondary); color: var(--color-accent);
-      font-weight: bold; letter-spacing: 1px;
+      background: var(--color-secondary);
+      color: var(--color-accent);
+      font-weight: bold;
+      letter-spacing: 1px;
     }
-    .joblist-table tr:last-child td { border-bottom: none;}
+
+    .joblist-table tr:last-child td {
+      border-bottom: none;
+    }
+
     .job-badge {
-      display:inline-block; background: var(--color-primary); color: var(--color-accent);
-      font-size: 12px; border-radius: 10px; padding: 2px 10px; margin-right: 4px;
-      animation: badgePulse 2.8s infinite cubic-bezier(.58,.04,.66,.93);
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--color-accent);
+      font-size: 12px;
+      border-radius: 10px;
+      padding: 2px 10px;
+      margin-right: 4px;
+      animation: badgePulse 2.8s infinite cubic-bezier(.58, .04, .66, .93);
     }
+
     @keyframes badgePulse {
-      0% { box-shadow:0 0 2px #FFD60077;}
-      50%{ box-shadow:0 0 18px #FFD60059;}
-      100%{ box-shadow:0 0 2px #FFD60077;}
+      0% {
+        box-shadow: 0 0 2px #FFD60077;
+      }
+
+      50% {
+        box-shadow: 0 0 18px #FFD60059;
+      }
+
+      100% {
+        box-shadow: 0 0 2px #FFD60077;
+      }
     }
 
-    .employer-wall { display:flex; gap:18px; flex-wrap:wrap; margin-top:10px;margin-bottom:16px;align-items: center;}
+    .employer-wall {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+
     .employer-wall img {
-      height: 28px; width:auto; background:#fff; border-radius:6px; box-shadow:0 0 4px #eee; max-width:90px; object-fit:contain;
-      opacity:0; transform: scale(.78); animation:logoPop 0.68s cubic-bezier(.46,.07,.36,1.1) forwards;
+      height: 28px;
+      width: auto;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 0 4px #eee;
+      max-width: 90px;
+      object-fit: contain;
+      opacity: 0;
+      transform: scale(.78);
+      animation: logoPop 0.68s cubic-bezier(.46, .07, .36, 1.1) forwards;
     }
-    .employer-wall img:nth-child(1){animation-delay:.24s;}
-    .employer-wall img:nth-child(2){animation-delay:.36s;}
-    .employer-wall img:nth-child(3){animation-delay:.44s;}
-    .employer-wall img:nth-child(4){animation-delay:.56s;}
-    @keyframes logoPop { to { opacity:1; transform: scale(1); } }
 
-    .stat-block, .sister-block {
+    .employer-wall img:nth-child(1) {
+      animation-delay: .24s;
+    }
+
+    .employer-wall img:nth-child(2) {
+      animation-delay: .36s;
+    }
+
+    .employer-wall img:nth-child(3) {
+      animation-delay: .44s;
+    }
+
+    .employer-wall img:nth-child(4) {
+      animation-delay: .56s;
+    }
+
+    @keyframes logoPop {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .stat-block,
+    .sister-block {
       background: var(--color-block);
       border-radius: 10px;
       padding: 18px;
       margin-top: 20px;
       margin-bottom: 8px;
-      box-shadow:0 1px 9px #fffde778;
+      box-shadow: 0 1px 9px #fffde778;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
     }
-    .stat-title, .sister-title{color:var(--color-accent);font-weight:bold;}
-    .sister-list{display:flex; gap: 16px; flex-wrap:wrap;}
-    .sister-list .school-block{
-      background:var(--color-secondary);border-radius:7px;padding:8px 14px;color:var(--color-dark);font-size:14px; display:flex;align-items:center;gap:8px;margin-bottom:6px;
-      box-shadow:0 1px 4px #fbc02d39;animation:blinkIcon 2.6s infinite alternate;
+
+    .stat-title,
+    .sister-title {
+      color: var(--color-accent);
+      font-weight: bold;
+    }
+
+    .sister-list {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .sister-list .school-block {
+      background: var(--color-secondary);
+      border-radius: 7px;
+      padding: 8px 14px;
+      color: var(--color-dark);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      box-shadow: 0 1px 4px #fbc02d39;
+      animation: blinkIcon 2.6s infinite alternate;
       min-width: 180px;
     }
-    .sister-list .school-block img {height:17px;max-width:40px;}
-    @keyframes blinkIcon{
-      from{filter:brightness(0.95) drop-shadow(0 0 1px #fdd83555);}
-      to{filter:brightness(1.18) drop-shadow(0 0 7px #fdd835);}
+
+    .sister-list .school-block img {
+      height: 17px;
+      max-width: 40px;
     }
+
+    @keyframes blinkIcon {
+      from {
+        filter: brightness(0.95) drop-shadow(0 0 1px #fdd83555);
+      }
+
+      to {
+        filter: brightness(1.18) drop-shadow(0 0 7px #fdd835);
+      }
+    }
+
     /* RWD */
     @media (max-width:900px) {
-      .main-container { padding: 20px 2vw 30px 2vw; }
+      .main-container {
+        padding: 20px 2vw 30px 2vw;
+      }
+
+      .stat-block {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
+
     @media (max-width: 600px) {
-      .main-container { padding: 12px 1vw;}
-      .testimonial-list, .alumni-list, .resources-list, .employer-wall, .sister-list { flex-direction: column; gap: 7px;}
-      .testimonial-card, .alumni-card, .result-row { min-width:0;width:100%;margin-right:0;}
-      .testimonial-list { transform: none !important;}
-      .carousel-dotnav { margin-bottom:10px;}
-      .result-row{flex-direction:column;align-items:flex-start;}
-      .alumni-card{min-width:0;}
-      .results-list{padding:8px;}
-      .section-title{font-size:19px;}
+      .main-container {
+        padding: 12px 1vw;
+      }
+
+      .testimonial-list,
+      .alumni-list,
+      .resources-list,
+      .employer-wall,
+      .sister-list {
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .testimonial-card,
+      .alumni-card,
+      .result-row {
+        min-width: 0;
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .testimonial-list {
+        transform: none !important;
+      }
+
+      .carousel-dotnav {
+        margin-bottom: 10px;
+      }
+
+      .result-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .alumni-card {
+        min-width: 0;
+      }
+
+      .results-list {
+        padding: 8px;
+      }
+
+      .section-title {
+        font-size: 19px;
+      }
+
+      .stat-block {
+        gap: 14px;
+      }
     }
   </style>
 </head>
-<body>
-  <!-- 沙鹿特色banner + logo浮動 -->
-  <section class="unique-banner">
-    <div class="site-logo-move">
-      <img src="your_school_logo.png" alt="系徽" />
-      <span style="font-size:1.09em;font-family:'Segoe UI Mono',monospace;font-weight:bold;color:var(--color-accent)">
-        資管系 x 實習專區
-      </span>
-    </div>
-    <div class="slogan">
-      「用實習連結業界，你的一己成就，就在這裡發光。」
-      <svg class="icon-shalu" viewBox="0 0 48 48" fill="none">
-        <ellipse cx="24" cy="44" rx="12" ry="2.4" fill="#eee"/>
-        <path d="M10 38c7-7 21-7 28 0" stroke="#B65D1D" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="24" cy="24" r="16" fill="#FDD835" stroke="#B65D1D" stroke-width="3"/>
-        <rect x="21" y="12" width="6" height="20" rx="3" fill="#B65D1D"/>
-        <circle cx="24" cy="21.5" r="2.5" fill="#fff"/>
-      </svg>
-    </div>
-    <svg viewBox="0 0 200 20" class="svg-wave"><path d="M0,17 Q40,2 94,16 Q142,29 200,18 V20 H0 Z" fill="#fff"/></svg>
-  </section>
-  <div class="main-container">
 
-    <!-- 見證小輪播 ↓ -->
+<body>
+  <div class="main-container">
+    <section class="unique-banner">
+      <div class="site-logo-move">
+        <img src="https://im.nutc.edu.tw/var/file/63/1063/img/1434/imlogo.png" alt="系徽" />
+        <span style="font-size:1.09em;font-family:'Segoe UI Mono',monospace;font-weight:bold;color:var(--color-accent)">
+          資管系 x 實習專區
+        </span>
+      </div>
+    </section>
+    
+    <!-- 實用資源 -->
+    <div class="section-title">實用資源</div>
+    <div class="resources-list">
+      <button class="resource-button" onclick="location.href='#'">實習資訊</button>
+      <button class="resource-button" onclick="location.href='#'">實習前</button>
+      <button class="resource-button" onclick="location.href='#'">實習中</button>
+      <button class="resource-button" onclick="location.href='#'">實習後</button>
+      <button class="resource-button" onclick="location.href='#'">實習Q&A</button>
+    </div>
+
+
+    <div class="section-title">合作實習廠商</div>
+    <div class="employer-wall" style="display:flex; flex-wrap: wrap; gap:16px; align-items:center;">
+      <a href="https://www.tsmc.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://www.tsmc.com/themes/custom/bootstrap_sass/images/logo.png" alt="台積電 Logo"
+          style="height:28px; max-width:90px;" />
+      </a>
+      <a href="https://www.mediatek.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://www.mediatek.com/hubfs/MediaTek%20Assets/Images/Main-Logo.svg" alt="聯發科 Logo"
+          style="height:28px; max-width:90px;" />
+      </a>
+      <a href="https://www.asml.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://ntucace.ntu.edu.tw/institution/download.logo/sn/39/key/2024021819255365d1e941196e1/preview/1"
+          alt="艾司摩爾 Logo" style="height:28px; max-width:90px;" />
+      </a>
+      <a href="https://www.cathayholdings.com/" target="_blank" rel="noopener noreferrer">
+        <img
+          src="https://www.cathayholdings.com/holdings/-/media/aecbe706c11e499a8d7123f6bc3a15d4.svg?h=40&iar=0&w=198&sc_lang=zh-tw"
+          alt="國泰金控 Logo" style="height:28px; max-width:90px;" />
+      </a>
+      <a href="https://www.cht.com.tw/" target="_blank" rel="noopener noreferrer">
+        <img src="https://ntucace.ntu.edu.tw/institution/download.logo/sn/38/key/2024021819150965d1e6bda327f/preview/1"
+          alt="中華電信 Logo" style="height:28px; max-width:90px;" />
+      </a>
+      <a href="https://www.acer.com.tw/" target="_blank" rel="noopener noreferrer">
+        <img src="https://images.acer.com/is/content/acer/acer-4" alt="宏碁 Logo" style="height:28px; max-width:90px;" />
+      </a>
+
+    </div>
     <div class="section-title">學長姐真實見證</div>
     <div class="testimonial-carousel">
       <div class="testimonial-list" id="testimonial-slider">
         <div class="testimonial-card">
-          <img src="avatar1.jpg" alt="學長姐頭像">
+          <img
+            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkf9Q5YOUjlbOpqFQJdYGBtvE9h_j0fTM2nHQlJeSpKJC4pnXxeEMnvb5m5Q_m5th1hTomLlatIU-LYwH-sxPHk5WLTvsy4w4F2a63DV5s4shKIpsmuYr_re8wkOahFpLA9_TGTkfkJIIc/s400/yumekawa_baby.png"
+            alt="學長姐頭像">
           <div>
             <div class="testimonial-name">林同學｜2024 實習生</div>
             <div class="testimonial-quote">「進入台積電實習，不只學到技術，還打開國際視野！」</div>
@@ -357,7 +855,9 @@
           </div>
         </div>
         <div class="testimonial-card">
-          <img src="avatar2.jpg" alt="學長姐頭像">
+          <img
+            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkf9Q5YOUjlbOpqFQJdYGBtvE9h_j0fTM2nHQlJeSpKJC4pnXxeEMnvb5m5Q_m5th1hTomLlatIU-LYwH-sxPHk5WLTvsy4w4F2a63DV5s4shKIpsmuYr_re8wkOahFpLA9_TGTkfkJIIc/s400/yumekawa_baby.png"
+            alt="學長姐頭像">
           <div>
             <div class="testimonial-name">黃同學｜2023 校友</div>
             <div class="testimonial-quote">「資管系實習媒合會讓我提早認識職場，找到適合自己的企業。」</div>
@@ -365,7 +865,9 @@
           </div>
         </div>
         <div class="testimonial-card">
-          <img src="avatar3.jpg" alt="學長姐頭像">
+          <img
+            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkf9Q5YOUjlbOpqFQJdYGBtvE9h_j0fTM2nHQlJeSpKJC4pnXxeEMnvb5m5Q_m5th1hTomLlatIU-LYwH-sxPHk5WLTvsy4w4F2a63DV5s4shKIpsmuYr_re8wkOahFpLA9_TGTkfkJIIc/s400/yumekawa_baby.png"
+            alt="學長姐頭像">
           <div>
             <div class="testimonial-name">陳學姍｜2022 實習生</div>
             <div class="testimonial-quote">「課堂理論與實習實務如拼圖接軌，讓我自信踏出資管第一步。」</div>
@@ -384,13 +886,17 @@
     <div class="section-title">實習成果展示牆</div>
     <div class="results-list">
       <div class="result-row">
-        <img src="tsmc_logo.png" class="result-logo" alt="台積電">
-        <span class="result-name">王小明</span>｜台積電 MIS 實習生（2025）
+        <img
+          src="https://upload.wikimedia.org/wikipedia/zh/thumb/8/83/Taiwan_Semiconductor_Manufacturing_Co_logo.svg/1200px-Taiwan_Semiconductor_Manufacturing_Co_logo.svg.png"
+          class="result-logo" alt="台積電">
+        <span class="result-name">劉少爺</span>｜台積電 MIS 實習生（2025）
         <a class="result-link" href="#">成果簡報檢視</a>
       </div>
       <div class="result-row">
-        <img src="appdesign_logo.png" class="result-logo" alt="App Design">
-        <span class="result-name">賴小芳</span>｜APP設計股份有限公司 專案助理
+        <img
+          src="https://upload.wikimedia.org/wikipedia/zh/thumb/8/83/Taiwan_Semiconductor_Manufacturing_Co_logo.svg/1200px-Taiwan_Semiconductor_Manufacturing_Co_logo.svg.png"
+          class="result-logo" alt="App Design">
+        <span class="result-name">石魚庭</span>｜APP設計股份有限公司 專案助理
         <a class="result-link" href="#">觀看專題影片</a>
       </div>
     </div>
@@ -412,15 +918,6 @@
       </div>
     </div>
 
-    <!-- 實用資源 -->
-    <div class="section-title">實用資源</div>
-    <div class="resources-list">
-      <a href="#" class="resource-link"><svg viewBox="0 0 24 24"><path d="M5 8h14v2H5zm0 4h14v2H5z" /></svg>履歷範本下載</a>
-      <a href="#" class="resource-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>面試Q&A</a>
-      <a href="#" class="resource-link"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>自傳寫作精選</a>
-      <a href="#" class="resource-link"><svg viewBox="0 0 24 24"><path d="M2 12h20"/></svg>一鍵投遞表單</a>
-      <a href="#" class="resource-link"><svg viewBox="0 0 24 24"><polygon points="12,2 2,22 22,22"/></svg>產業適合度測驗</a>
-    </div>
 
     <!-- 媒合會/機會快報 -->
     <div class="section-title">實習媒合會・機會搶先報</div>
@@ -447,56 +944,65 @@
         <td><a class="result-link" href="#">參加連結</a></td>
       </tr>
     </table>
+
+    <!-- 統計圖表 -->
+    <div class="section-title" style="margin-top:34px;">實習領域分布統計</div>
     <div class="stat-block">
-      <div class="stat-title">今年實習廠商領域統計</div>
-      <div style="margin:8px 0; font-size:15px;">IT/程式開發 12家｜金融 5家｜數據分析 9家｜設計 4家</div>
+      <svg width="145" height="145" viewBox="0 0 160 160" style="flex-shrink:0;">
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FFD600" stroke-width="36"
+          stroke-dasharray="150.7 377" stroke-dashoffset="0" />
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#B65D1D" stroke-width="36" stroke-dasharray="56.6 377"
+          stroke-dashoffset="-150.7" />
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FBC02D" stroke-width="36"
+          stroke-dasharray="113.1 377" stroke-dashoffset="-207.3" />
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FFE082" stroke-width="36" stroke-dasharray="56.6 377"
+          stroke-dashoffset="-320.4" />
+        <circle r="36" cx="80" cy="80" fill="#fff" />
+        <text x="80" y="87" text-anchor="middle" fill="#B65D1D" font-size="22" font-weight="bold"
+          font-family="monospace">統計</text>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:16px;">
+        <div><span style="display:inline-block;width:18px;height:10px;background:#FFD600;border-radius:2px;"></span>
+          IT/程式開發：40%</div>
+        <div><span style="display:inline-block;width:18px;height:10px;background:#B65D1D;border-radius:2px;"></span>
+          金融：15%</div>
+        <div><span style="display:inline-block;width:18px;height:10px;background:#FBC02D;border-radius:2px;"></span>
+          數據分析：30%</div>
+        <div><span style="display:inline-block;width:18px;height:10px;background:#FFE082;border-radius:2px;"></span>
+          設計：15%</div>
+      </div>
     </div>
-    <div class="section-title">合作實習廠商</div>
-    <div class="employer-wall">
-      <img src="tsmc_logo.png" alt="台積電">
-      <img src="appdesign_logo.png" alt="APP設計股份">
-      <img src="cat_logo.png" alt="國泰金控">
-      <img src="asml_logo.png" alt="艾司摩爾">
-    </div>
+
+
+
     <!-- 實習辦法 -->
     <div class="section-title">實習辦法</div>
-    <div style="background:var(--color-block);padding:14px;border-radius:7px;color:var(--color-dark);margin-bottom:12px;">
+    <div
+      style="background:var(--color-block);padding:14px;border-radius:7px;color:var(--color-dark);margin-bottom:12px;">
       <ul>
         <li>申請資格：本系大三、大四學生；碩士生優先。</li>
         <li>審查流程：履歷與自傳 → 書面審查 → 面試 → 正式媒合。</li>
         <li>完整規定、下載專用表格：<a href="#" style="color:var(--color-accent);text-decoration:underline;">點此查看</a></li>
       </ul>
     </div>
-    <!-- 姊妹校 -->
-    <div class="section-title">姊妹校夥伴</div>
-    <div class="sister-block">
-      <div class="sister-title">國際學術合作專區</div>
-      <div class="sister-list">
-        <div class="school-block"><img src="ntust_logo.png" alt="NTUST">國立台灣科技大學</div>
-        <div class="school-block"><img src="uosaka_logo.png" alt="大阪大學">日本大阪大學</div>
-        <div class="school-block"><img src="ntu_logo.png" alt="NTU">國立台灣大學</div>
-      </div>
-    </div>
   </div>
   <script>
-    // Testimonials carousel - auto & dot nav with RWD修正
-    const carousel = document.getElementById('testimonial-slider');
     const dots = document.querySelectorAll('.carousel-dot');
-    let current = 0;
-    function showTestimonial(idx) {
-      const card = document.querySelector('.testimonial-card');
-      if(window.innerWidth<=600){
-        carousel.style.transform='none';
-      } else if(card){
-        const cardW = card.offsetWidth + 24;
-        carousel.style.transform = `translateX(${-idx * cardW}px)`;
-      }
-      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    }
-    dots.forEach((d, i) => d.onclick = () => showTestimonial(current = i));
-    window.addEventListener('resize', ()=>showTestimonial(current));
-    setInterval(()=>{ current = (current+1) % 3; showTestimonial(current); }, 5000);
-    showTestimonial(0);
+    const slider = document.getElementById('testimonial-slider');
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const cardWidth = slider.children[0].offsetWidth + 16; // 16 是卡片之間的 gap
+        slider.scrollTo({
+          left: index * cardWidth,
+          behavior: 'smooth'
+        });
+        dots.forEach(dot => dot.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
   </script>
+
 </body>
+
 </html>
