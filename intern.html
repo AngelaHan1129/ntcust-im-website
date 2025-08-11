@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>資管系實習專區｜一己成就職涯</title>
+   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   <style>
     :root {
       --color-primary: #e8c00f;
@@ -24,7 +26,6 @@
     body {
       font-family: "Zen Kaku Gothic New", 'Segoe UI Mono', monospace, sans-serif;
       color: var(--color-dark);
-      background: var(--color-bg);
       margin: 0;
     }
 
@@ -63,7 +64,57 @@
       position: relative;
       overflow: visible;
       min-height: 90px;
+      margin-bottom: 20px;
     }
+
+    .creative-banner {
+      font-family: 'Segoe UI Mono', monospace;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: #B65D1D;
+      text-shadow:
+        2px 2px 0 #FFD600,
+        4px 4px 6px rgba(182, 93, 29, 0.35);
+      letter-spacing: 0.12em;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3em 0.6em;
+      background: linear-gradient(90deg, #fff9c470 70%, #EFE7DC 100%);
+      border-radius: 14px 50px 14px 50px;
+      box-shadow:
+        inset 0 -6px 12px #fff9c470,
+        0 0 12px #FBC02D;
+      user-select: none;
+      transition: all 0.3s ease;
+    }
+
+    .creative-banner:hover {
+      color: #e8c00f;
+      text-shadow:
+        2px 2px 4px #B65D1D,
+        4px 4px 12px #FFD600;
+      box-shadow:
+        inset 0 -8px 16px #fffbeaaa,
+        0 0 20px #FFE082;
+    }
+
+    .creative-banner .highlight {
+      color: #FFD600;
+      font-weight: 900;
+      font-style: italic;
+      text-shadow: 1px 1px 0 #B65D1D;
+      margin: 0 0.15em;
+      transform: scale(1.2);
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .creative-banner:hover .highlight {
+      transform: scale(1.4) rotate(6deg);
+      color: #fff176;
+      text-shadow: 0 0 6px #B65D1D;
+    }
+
 
     .svg-wave {
       position: absolute;
@@ -79,7 +130,6 @@
       left: 50%;
       top: 10px;
       transform: translateX(-50%) scale(1);
-      animation: logoFloat 2.7s infinite alternate cubic-bezier(.97, .01, .13, .97);
       background: #fff;
       border-radius: 30px;
       box-shadow: 0 2px 16px #9a7b1fcc;
@@ -250,14 +300,14 @@
     /* 引言內容 */
     .testimonial-quote {
       font-style: italic;
-      font-size: 0.95rem;
+      font-size: 0.95rem !important;
       margin-bottom: 0.5rem;
       color: #555;
     }
 
     /* 超連結樣式 */
     .testimonial-link {
-      font-size: 0.85rem;
+      font-size: 0.85rem !important;
       color: #888;
     }
 
@@ -357,6 +407,74 @@
       background: var(--color-primary);
     }
 
+    .employer-carousel {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding: 1rem 0.5rem;
+    }
+
+    .employer-list {
+  display: flex;
+  flex-wrap: wrap; /* 允許換行 */
+  gap: 18px;
+  align-items: center;
+  max-height: 140px; /* 限制高度約2行，調整視需求 */
+  overflow-y: auto; /* 超出可滾動 */
+  padding-left: 1rem;
+  width: 100%;
+}
+
+    .employer-list a img {
+      height: 28px;
+      max-width: 120px;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 0 4px #eee;
+      object-fit: contain;
+      transition: transform 0.3s;
+    }
+
+    .employer-wall {
+      display: inline-flex;
+      gap: 18px;
+      flex-wrap: nowrap;
+      padding-left: 1rem;
+      min-width: 100%;
+    }
+.company-name {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #fff9c4;
+  color: #B65D1D;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(182, 93, 29, 0.3);
+   white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+    .carousel-dotnav {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .carousel-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 4px;
+      background: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-dot.active {
+      background-color: #B65D1D;
+    }
+
     .alumni-list,
     .resources-list,
     .results-list,
@@ -373,6 +491,7 @@
     .sister-list {
       display: flex;
       flex-wrap: wrap;
+      justify-content: flex-start;
       gap: 16px;
     }
 
@@ -446,7 +565,7 @@
 
     .result-link {
       font-size: 13px;
-      color: var(--color-dark);
+      color: var(--color-accent);
       margin-left: auto;
       text-decoration: underline;
     }
@@ -521,21 +640,32 @@
     .resource-link {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      background: var(--color-primary);
-      color: var(--color-accent);
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 15px;
+      justify-content: center;
+      width: 120px;
+      height: 40px;
+      background-image: linear-gradient(to top, #f9f1d8 0%, #fff9e1 80%, #fffbea 100%);
+      border-radius: 8px;
+      border: 1px solid #b69a6a;
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #B65D1D;
+      text-shadow: 0 1px #fff8d1;
       text-decoration: none;
-      box-shadow: 0 1px 2px rgba(182, 93, 29, .09);
-      transition: background .16s, color .16s, box-shadow .18s;
-      position: relative;
-      overflow: hidden;
-      font-family: 'Segoe UI Mono', monospace;
-      min-width: 160px;
+      margin-right: 8px;
+      transition: all 0.2s ease;
     }
+
+    .resource-link:hover {
+      box-shadow: 0 4px 3px 1px #fffbee,
+        0 6px 8px #dbd0a1,
+        0 -4px 4px #d4cba6,
+        0 -6px 4px #fffef2,
+        inset 0 0 3px 3px #d4cba6;
+      background-color: #B65D1D;
+      color: #fff;
+    }
+
 
     .resource-link svg {
       width: 19px;
@@ -794,24 +924,20 @@
 <body>
   <div class="main-container">
     <section class="unique-banner">
-      <div class="site-logo-move">
-        <span style="font-size:1.09em;font-family:'Segoe UI Mono',monospace;font-weight:bold;color:var(--color-accent)">
-          資管系 x 實習專區
-        </span>
+      <div class="creative-banner">
+        資管系 <span class="highlight">x</span> 實習專區
       </div>
     </section>
-
-    <!-- 實用資源 -->
-
     <div class="resources-list">
-      <button class="resource-button" onclick="location.href='#'">實習資訊</button>
-      <button class="resource-button" onclick="location.href='#'">實習前</button>
-      <button class="resource-button" onclick="location.href='#'">實習中</button>
-      <button class="resource-button" onclick="location.href='#'">實習後</button>
-      <button class="resource-button" onclick="location.href='#'">實習Q&A</button>
+      <a class="resource-link" href="實習公告連結">實習公告</a>
+      <a class="resource-link" href="實習辦法連結">實習辦法</a>
+      <a class="resource-link" href="文件下載連結">文件下載</a>
+      <a class="resource-link" href="實習手冊連結">實習手冊</a>
+      <a class="resource-link" href="實習Q&A連結">實習Q&A</a>
+      <a class="resource-link" href="實習合作廠商連結">實習合作廠商</a>
+      <a class="resource-link" href="相關連結">相關連結</a>
     </div>
 
-    <!-- 媒合會/機會快報 -->
     <div class="section-title">實習媒合會・機會搶先報</div>
     <table class="joblist-table">
       <tr>
@@ -837,32 +963,172 @@
       </tr>
     </table>
 
-    <div class="section-title">合作實習廠商</div>
-    <div class="employer-wall" style="display:flex; flex-wrap: wrap; gap:16px; align-items:center;">
-      <a href="https://www.tsmc.com/" target="_blank" rel="noopener noreferrer">
-        <img src="https://www.tsmc.com/themes/custom/bootstrap_sass/images/logo.png" alt="台積電 Logo"
-          style="height:28px; max-width:90px;" />
-      </a>
-      <a href="https://www.mediatek.com/" target="_blank" rel="noopener noreferrer">
-        <img src="https://www.mediatek.com/hubfs/MediaTek%20Assets/Images/Main-Logo.svg" alt="聯發科 Logo"
-          style="height:28px; max-width:90px;" />
-      </a>
-      <a href="https://www.asml.com/" target="_blank" rel="noopener noreferrer">
-        <img src="https://ntucace.ntu.edu.tw/institution/download.logo/sn/39/key/2024021819255365d1e941196e1/preview/1"
-          alt="艾司摩爾 Logo" style="height:28px; max-width:90px;" />
-      </a>
-      <a href="https://www.cathayholdings.com/" target="_blank" rel="noopener noreferrer">
-        <img
-          src="https://www.cathayholdings.com/holdings/-/media/aecbe706c11e499a8d7123f6bc3a15d4.svg?h=40&iar=0&w=198&sc_lang=zh-tw"
-          alt="國泰金控 Logo" style="height:28px; max-width:90px;" />
-      </a>
-      <a href="https://www.cht.com.tw/" target="_blank" rel="noopener noreferrer">
-        <img src="https://ntucace.ntu.edu.tw/institution/download.logo/sn/38/key/2024021819150965d1e6bda327f/preview/1"
-          alt="中華電信 Logo" style="height:28px; max-width:90px;" />
-      </a>
-      <a href="https://www.acer.com.tw/" target="_blank" rel="noopener noreferrer">
-        <img src="https://images.acer.com/is/content/acer/acer-4" alt="宏碁 Logo" style="height:28px; max-width:90px;" />
-      </a>
+    <div class="section-title">實習課程說明</div>
+    <div
+      style="background:var(--color-block);padding:14px;border-radius:7px;color:var(--color-dark);margin-bottom:12px;">
+      <ul>
+        <li>申請資格：本系大三、大四學生；碩士生優先。</li>
+        <li>審查流程：履歷與自傳 → 書面審查 → 面試 → 正式媒合。</li>
+        <li>完整規定、下載專用表格：<a href="#" style="color:var(--color-accent);text-decoration:underline;">點此查看</a></li>
+      </ul>
+    </div>
+
+<div class="section-title">合作實習廠商</div>
+<div class="employer-carousel">
+  <div class="employer-list" id="employer-list">
+    <!-- 台積電等 Logo 保持原樣 -->
+    <a href="https://www.tsmc.com/" target="_blank">
+      <img src="https://www.tsmc.com/themes/custom/bootstrap_sass/images/logo.png" alt="台積電 Logo" />
+    </a>
+    <a href="https://www.mediatek.com/" target="_blank">
+      <img src="https://www.mediatek.com/hubfs/MediaTek%20Assets/Images/Main-Logo.svg" alt="聯發科 Logo" />
+    </a>
+    <a href="https://www.asml.com/" target="_blank">
+      <img src="https://ntucace.ntu.edu.tw/institution/download.logo/sn/39/key/2024021819255365d1e941196e1/preview/1" alt="艾司摩爾 Logo" />
+    </a>
+    <a href="https://www.cathayholdings.com/" target="_blank">
+      <img src="https://www.cathayholdings.com/holdings/-/media/aecbe706c11e499a8d7123f6bc3a15d4.svg?h=40&amp;iar=0&amp;w=198&amp;sc_lang=zh-tw"
+           alt="國泰金控 Logo" />
+    </a>
+    <a href="https://www.cht.com.tw/" target="_blank">
+      <img src="https://ntucace.ntu.edu.tw/institution/download.logo/sn/38/key/2024021819150965d1e6bda327f/preview/1" alt="中華電信 Logo" />
+    </a>
+    <a href="https://www.acer.com.tw/" target="_blank">
+      <img src="https://images.acer.com/is/content/acer/acer-4" alt="宏碁 Logo" />
+    </a>
+
+    <!-- 100 家合作廠商純文字 -->
+    <span class="company-name">力學股份有限公司</span>
+    <span class="company-name">士林電機廠股份限公司</span>
+    <span class="company-name">大傳數位科技有限公司</span>
+    <span class="company-name">大數創異國際股份有限公司</span>
+    <span class="company-name">中國上優科技股份有限公司</span>
+    <span class="company-name">中國信託商業銀行</span>
+    <span class="company-name">中華民國游泳協會</span>
+    <span class="company-name">仁德醫護管理專科學校</span>
+    <span class="company-name">元弘資訊系統有限公司</span>
+    <span class="company-name">元美多媒體有限公司</span>
+    <span class="company-name">元強資訊有限公司</span>
+    <span class="company-name">友達光電股份有限公司</span>
+    <span class="company-name">天汗工程股份有限公司</span>
+    <span class="company-name">台中市電腦商業同業公會</span>
+    <span class="company-name">台灣外匯研究學會</span>
+    <span class="company-name">台灣康寧顯示玻璃股份有限公司</span>
+    <span class="company-name">巨鷗科技股份有限公司</span>
+    <span class="company-name">本野有限公司</span>
+    <span class="company-name">正邦數位有限公司</span>
+    <span class="company-name">正義街科技股份有限公司</span>
+    <span class="company-name">玉晶光電股份有限公司</span>
+    <span class="company-name">光聯科技股份有限公司</span>
+    <span class="company-name">全聯實業股份有限公司</span>
+    <span class="company-name">百佳泰股份有限公司中科分公司</span>
+    <span class="company-name">艾威資訊科技有限公司</span>
+    <span class="company-name">西氏亞洲有限公司</span>
+    <span class="company-name">宏栩科技股份有限公司</span>
+    <span class="company-name">宏華國際股份有限公司</span>
+    <span class="company-name">忻旅科技股份有限公司</span>
+    <span class="company-name">秀傳媒娛樂有限公司</span>
+    <span class="company-name">京元電子股份有限公司</span>
+    <span class="company-name">尚進教育訓練有限公司</span>
+    <span class="company-name">明昌國際工業股份有限公司</span>
+    <span class="company-name">昕恩科技股份有限公司</span>
+    <span class="company-name">采易資訊系統股份有限公司</span>
+    <span class="company-name">帝商科技股份有限公司</span>
+    <span class="company-name">廻鄉有機事業股份有限公司</span>
+    <span class="company-name">思構方程資訊服務有限公司</span>
+    <span class="company-name">昶青實業股份有限公司</span>
+    <span class="company-name">祈旅科技股份有限公司</span>
+    <span class="company-name">風之翼科技有限公司</span>
+    <span class="company-name">哲煜科技股份有限公司</span>
+    <span class="company-name">埃立思科技股份有限公司</span>
+    <span class="company-name">振聲機械科技有限公司</span>
+    <span class="company-name">時刻科技股份有限公司</span>
+    <span class="company-name">朗齊生物醫學股份有限公司</span>
+    <span class="company-name">泰爾科技股份有限公司</span>
+    <span class="company-name">神弈教育有限公司</span>
+    <span class="company-name">財團法人工業技術研究院</span>
+    <span class="company-name">財團法人台灣海風文教協會</span>
+    <span class="company-name">馬來西亞商思想科技有限公司</span>
+    <span class="company-name">國立自然科學博物館</span>
+    <span class="company-name">國家中山科學研究院航空研究所</span>
+    <span class="company-name">國家表演藝術中心(國家兩廳院)</span>
+    <span class="company-name">國泰人壽保險股份有限公司</span>
+    <span class="company-name">國興資訊股份有限公司</span>
+    <span class="company-name">探谷科技有限公司</span>
+    <span class="company-name">清華大學教育數據微學程計畫辦公室</span>
+    <span class="company-name">雪鴞娛樂有限公司</span>
+    <span class="company-name">創昕顧問股份有限公司</span>
+    <span class="company-name">創科資訊股份有限公司</span>
+    <span class="company-name">博澭科技有限公司</span>
+    <span class="company-name">喬思齊科技股份有限公司</span>
+    <span class="company-name">掌樂科技有限公司</span>
+    <span class="company-name">揚立科技有限公司</span>
+    <span class="company-name">智域國際股份有限公司</span>
+    <span class="company-name">程式人生網路科技有限公司</span>
+    <span class="company-name">童綜醫療社團法人童綜合醫院</span>
+    <span class="company-name">萊爾富國際股份有限公司</span>
+    <span class="company-name">開能有限公司</span>
+    <span class="company-name">勤學科技股份有限公司</span>
+    <span class="company-name">愛吠的狗娛樂股份有限公司</span>
+    <span class="company-name">新加坡商鈦坦科技股份有限公司</span>
+    <span class="company-name">新田科技有限公司</span>
+    <span class="company-name">煒晟國際股份有限公司</span>
+    <span class="company-name">群惢整合服務股份有限公司</span>
+    <span class="company-name">運嘉國際股份有限公司</span>
+    <span class="company-name">達程建設股份有限公司</span>
+    <span class="company-name">鼎新電腦股份有限公司</span>
+    <span class="company-name">嘉里大榮物流股份有限公司</span>
+    <span class="company-name">嘉洲貿易企業</span>
+    <span class="company-name">夢想動畫股份有限公司</span>
+    <span class="company-name">漢升企業管理顧問有限公司</span>
+    <span class="company-name">瑪麗安生技有限公司</span>
+    <span class="company-name">精誠資訊股份有限公司</span>
+    <span class="company-name">綠菌生技股份有限公司</span>
+    <span class="company-name">維塵有限公司</span>
+    <span class="company-name">網城在線有限公司</span>
+    <span class="company-name">網銀國際股份有限公司</span>
+    <span class="company-name">蒼松科技有限公司</span>
+    <span class="company-name">豪程國際有限公司</span>
+    <span class="company-name">酷愛迪數位創意有限公司</span>
+    <span class="company-name">慧智科技股份有限公司</span>
+    <span class="company-name">震合工業有限公司</span>
+    <span class="company-name">聯股資訊科技有限公司</span>
+    <span class="company-name">關貿網路股份有限公司</span>
+    <span class="company-name">騰沐數位媒體有限公司</span>
+    <span class="company-name">驓勤爵也國際有限公司</span>
+    <span class="company-name">Profet AI 杰倫智能科技</span>
+    <span class="company-name">SummerTimeStudio 株式會社</span>
+  </div>
+</div>
+
+
+
+
+    <div class="section-title" style="margin-top:34px;">實習領域分布統計</div>
+    <div class="stat-block">
+      <svg width="145" height="145" viewBox="0 0 160 160" style="flex-shrink:0;">
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FFD600" stroke-width="36"
+          stroke-dasharray="150.7 377" stroke-dashoffset="0" />
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#B65D1D" stroke-width="36" stroke-dasharray="56.6 377"
+          stroke-dashoffset="-150.7" />
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FBC02D" stroke-width="36"
+          stroke-dasharray="113.1 377" stroke-dashoffset="-207.3" />
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FFE082" stroke-width="36" stroke-dasharray="56.6 377"
+          stroke-dashoffset="-320.4" />
+        <circle r="36" cx="80" cy="80" fill="#fff" />
+        <text x="80" y="87" text-anchor="middle" fill="#B65D1D" font-size="22" font-weight="bold"
+          font-family="monospace">統計</text>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:16px;">
+        <div><span style="display:inline-block;width:18px;height:10px;background:#FFD600;border-radius:2px;"></span>
+          IT/程式開發：40%</div>
+        <div><span style="display:inline-block;width:18px;height:10px;background:#B65D1D;border-radius:2px;"></span>
+          金融：15%</div>
+        <div><span style="display:inline-block;width:18px;height:10px;background:#FBC02D;border-radius:2px;"></span>
+          數據分析：30%</div>
+        <div><span style="display:inline-block;width:18px;height:10px;background:#FFE082;border-radius:2px;"></span>
+          設計：15%</div>
+      </div>
     </div>
 
     <div class="section-title">實習回饋</div>
@@ -899,92 +1165,34 @@
           </div>
         </div>
       </div>
-      <!-- <div class="carousel-dotnav">
-        <span class="carousel-dot active"></span>
-        <span class="carousel-dot"></span>
-        <span class="carousel-dot"></span>
-      </div> -->
-    </div>
-
-    <!-- 成果展示職涯牆 -->
-    <!-- <div class="section-title">實習成果展示牆</div> -->
-    <!-- <div class="results-list">
-      <div class="result-row">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/zh/thumb/8/83/Taiwan_Semiconductor_Manufacturing_Co_logo.svg/1200px-Taiwan_Semiconductor_Manufacturing_Co_logo.svg.png"
-          class="result-logo" alt="台積電">
-        <span class="result-name">劉少爺</span>｜台積電 MIS 實習生（2025）
-        <a class="result-link" href="#">成果簡報檢視</a>
-      </div>
-      <div class="result-row">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/zh/thumb/8/83/Taiwan_Semiconductor_Manufacturing_Co_logo.svg/1200px-Taiwan_Semiconductor_Manufacturing_Co_logo.svg.png"
-          class="result-logo" alt="App Design">
-        <span class="result-name">石魚庭</span>｜APP設計股份有限公司 專案助理
-        <a class="result-link" href="#">觀看專題影片</a>
-      </div>
-    </div> -->
-
-
-
-    <!-- 統計圖表 -->
-    <div class="section-title" style="margin-top:34px;">實習領域分布統計</div>
-    <div class="stat-block">
-      <svg width="145" height="145" viewBox="0 0 160 160" style="flex-shrink:0;">
-        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FFD600" stroke-width="36"
-          stroke-dasharray="150.7 377" stroke-dashoffset="0" />
-        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#B65D1D" stroke-width="36" stroke-dasharray="56.6 377"
-          stroke-dashoffset="-150.7" />
-        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FBC02D" stroke-width="36"
-          stroke-dasharray="113.1 377" stroke-dashoffset="-207.3" />
-        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FFE082" stroke-width="36" stroke-dasharray="56.6 377"
-          stroke-dashoffset="-320.4" />
-        <circle r="36" cx="80" cy="80" fill="#fff" />
-        <text x="80" y="87" text-anchor="middle" fill="#B65D1D" font-size="22" font-weight="bold"
-          font-family="monospace">統計</text>
-      </svg>
-      <div style="display:flex;flex-direction:column;gap:6px;font-size:16px;">
-        <div><span style="display:inline-block;width:18px;height:10px;background:#FFD600;border-radius:2px;"></span>
-          IT/程式開發：40%</div>
-        <div><span style="display:inline-block;width:18px;height:10px;background:#B65D1D;border-radius:2px;"></span>
-          金融：15%</div>
-        <div><span style="display:inline-block;width:18px;height:10px;background:#FBC02D;border-radius:2px;"></span>
-          數據分析：30%</div>
-        <div><span style="display:inline-block;width:18px;height:10px;background:#FFE082;border-radius:2px;"></span>
-          設計：15%</div>
-      </div>
-    </div>
-
-
-
-    <!-- 實習辦法 -->
-    <div class="section-title">實習辦法</div>
-    <div
-      style="background:var(--color-block);padding:14px;border-radius:7px;color:var(--color-dark);margin-bottom:12px;">
-      <ul>
-        <li>申請資格：本系大三、大四學生；碩士生優先。</li>
-        <li>審查流程：履歷與自傳 → 書面審查 → 面試 → 正式媒合。</li>
-        <li>完整規定、下載專用表格：<a href="#" style="color:var(--color-accent);text-decoration:underline;">點此查看</a></li>
-      </ul>
     </div>
   </div>
-  <!-- <script>
-    const dots = document.querySelectorAll('.carousel-dot');
-    const slider = document.getElementById('testimonial-slider');
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        const cardWidth = slider.children[0].offsetWidth + 16; // 16 是卡片之間的 gap
-        slider.scrollTo({
-          left: index * cardWidth,
-          behavior: 'smooth'
-        });
-        dots.forEach(dot => dot.classList.remove('active'));
-        dot.classList.add('active');
-      });
-    });
-  </script> -->
-
 </body>
+<script>
+const list = document.getElementById('employer-list');
+const carousel = list.parentElement;
+
+// 自動無限滾動
+let speed = 0.3; // 滾動速度
+function loopScroll() {
+  carousel.scrollLeft += speed;
+
+  // 滾到最右邊時立刻回到開頭
+  if (carousel.scrollLeft >= list.scrollWidth - carousel.clientWidth) {
+    carousel.scrollLeft = 0;
+  }
+
+  requestAnimationFrame(loopScroll);
+}
+
+// 滑鼠移入暫停，移出繼續
+carousel.addEventListener('mouseenter', () => speed = 0);
+carousel.addEventListener('mouseleave', () => speed = 0.3);
+
+// 啟動滾動
+loopScroll();
+</script>
+
+
 
 </html>
