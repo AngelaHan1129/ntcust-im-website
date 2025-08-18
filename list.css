@@ -17408,8 +17408,13 @@ div.hdsearch {
   width: 100%;
   height: 150px;
   object-fit: cover;
+  border: 3px solid var(--color-secondary);
+}
+.page_mobileselfpg .mouter .d-txt .mtitle{
+  width: 100%;
 }
 .page_mobileselfpg .mouter .d-txt .mtitle a{
+   display: block;
   width: 100%;
   font-size: 1.5rem;
   line-height: 4rem;
@@ -17419,7 +17424,10 @@ div.hdsearch {
   text-overflow: ellipsis;
 }
 .page_mobileselfpg .mouter .d-txt .mdetail .meditor{
-  color: #c0a16b;
+  height: 130px;
+  color: #212121;
+  overflow-x: auto;
+  white-space:wrap;
 }
 .page_mobileselfpg .mpgbar nav,
 .page_mobilecgmolist .mpgbar nav {
