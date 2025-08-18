@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .particle-explosion {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.particle-explosion img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  filter: brightness(1);
+}
+
+.particle-explosion::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: 
+    radial-gradient(circle at 20% 20%, #ff6b6b 2px, transparent 2px),
+    radial-gradient(circle at 80% 20%, #4ecdc4 2px, transparent 2px),
+    radial-gradient(circle at 40% 40%, #45b7d1 2px, transparent 2px),
+    radial-gradient(circle at 60% 60%, #96ceb4 2px, transparent 2px),
+    radial-gradient(circle at 80% 80%, #feca57 2px, transparent 2px);
+  background-size: 50px 50px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+
+.particle-explosion:hover::before {
+  opacity: 1;
+  transform: scale(1.5) rotate(360deg);
+  animation: particleFloat 2s infinite ease-in-out;
+}
+
+.particle-explosion:hover img {
+  filter: brightness(1.2) contrast(1.1);
+  transform: scale(1.05);
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: scale(1.5) rotate(360deg) translateY(0px); }
+  50% { transform: scale(1.5) rotate(360deg) translateY(-10px); }
+}
+
+
+/* 2 */
+.liquid-wave {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.liquid-wave img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.8s ease;
+  filter: hue-rotate(0deg);
+}
+
+.liquid-wave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 120%;
+  background: linear-gradient(45deg, 
+    rgba(255, 107, 107, 0.3) 0%,
+    rgba(78, 205, 196, 0.3) 25%,
+    rgba(69, 183, 209, 0.3) 50%,
+    rgba(255, 193, 7, 0.3) 75%,
+    rgba(255, 107, 107, 0.3) 100%);
+  transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  transition: transform 1s ease;
+  mix-blend-mode: overlay;
+}
+
+.liquid-wave::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.3) 0%, 
+    transparent 70%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: all 0.8s ease;
+}
+
+.liquid-wave:hover::before {
+  transform: translateX(20%) translateY(20%) rotate(45deg);
+}
+
+.liquid-wave:hover::after {
+  width: 200px;
+  height: 200px;
+  animation: ripple 1.5s infinite;
+}
+
+.liquid-wave:hover img {
+  filter: hue-rotate(30deg) saturate(1.3);
+  transform: scale(1.1);
+}
+
+@keyframes ripple {
+  0% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.5); }
+  50% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
+}
+
+/* 3 */
+.magnetic-distortion {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.magnetic-distortion img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center;
+}
+
+.magnetic-distortion::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at center, 
+      transparent 30%, 
+      rgba(138, 43, 226, 0.1) 40%, 
+      transparent 50%),
+    radial-gradient(ellipse at 20% 20%, 
+      rgba(30, 144, 255, 0.2) 0%, 
+      transparent 30%),
+    radial-gradient(ellipse at 80% 80%, 
+      rgba(255, 20, 147, 0.2) 0%, 
+      transparent 30%);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.8s ease;
+  mix-blend-mode: screen;
+}
+
+.magnetic-distortion::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 
+    0 0 0 0 rgba(255, 255, 255, 0.7),
+    0 0 0 0 rgba(255, 255, 255, 0.5),
+    0 0 0 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.8s ease;
+}
+
+.magnetic-distortion:hover img {
+  filter: blur(1px) brightness(1.2);
+  transform: scale(1.15) rotateX(5deg) rotateY(5deg);
+}
+
+.magnetic-distortion:hover::before {
+  opacity: 1;
+  transform: scale(1.2) rotate(180deg);
+}
+
+.magnetic-distortion:hover::after {
+  box-shadow: 
+    0 0 10px 10px rgba(255, 255, 255, 0.1),
+    0 0 20px 20px rgba(255, 255, 255, 0.05),
+    0 0 30px 30px rgba(255, 255, 255, 0.02);
+  animation: magneticPulse 1s infinite alternate;
+}
+
+@keyframes magneticPulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1.5); }
+}
+/* 4 */
+.color-separation {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.color-separation img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.4s ease;
+}
+
+.color-separation::before,
+.color-separation::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+  mix-blend-mode: screen;
+}
+
+.color-separation::before {
+  background: url('your-image.jpg') center/cover;
+  filter: hue-rotate(0deg) sepia(1) saturate(3) hue-rotate(320deg);
+}
+
+.color-separation::after {
+  background: url('your-image.jpg') center/cover;
+  filter: hue-rotate(0deg) sepia(1) saturate(3) hue-rotate(200deg);
+}
+
+.color-separation:hover img {
+  filter: sepia(1) saturate(3) hue-rotate(100deg);
+  transform: translateX(0);
+}
+
+.color-separation:hover::before {
+  opacity: 0.7;
+  transform: translateX(-3px) translateY(-2px);
+}
+
+.color-separation:hover::after {
+  opacity: 0.7;
+  transform: translateX(3px) translateY(2px);
+}
+/* 5 */
+.energy-field {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  border-radius: 15px;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.energy-field img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.energy-field::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, 
+    rgba(0, 255, 255, 0.8) 0%,
+    rgba(0, 255, 255, 0.4) 30%,
+    rgba(138, 43, 226, 0.3) 60%,
+    transparent 100%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+.energy-field::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(0, 255, 255, 0.6) 50%,
+    transparent 100%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 1s ease;
+  z-index: 3;
+}
+
+.energy-field:hover img {
+  filter: brightness(1.3) contrast(1.2) saturate(1.4);
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+.energy-field:hover::before {
+  transform: translate(-50%, -50%) scale(40);
+  opacity: 0.6;
+  animation: energyPulse 2s infinite;
+}
+
+.energy-field:hover::after {
+  transform: translate(-50%, -50%) scale(60);
+  opacity: 0.3;
+  animation: energyPulse 2s infinite 0.5s;
+}
+
+@keyframes energyPulse {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(40); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(50); }
+}
+
+    </style>
+</head>
+<body>
+    <!-- 粒子爆發效果 -->
+<div class="particle-explosion">
+  <img src="img1.png" alt="圖片">
+</div>
+
+<!-- 液體波動效果 -->
+<div class="liquid-wave">
+  <img src="img1.png" alt="圖片">
+</div>
+
+<!-- 磁場扭曲效果 -->
+<div class="magnetic-distortion">
+  <img src="img1.png" alt="圖片">
+</div>
+
+<!-- 色彩分離效果 -->
+<div class="color-separation">
+  <img src="img1.png" alt="圖片">
+</div>
+
+<!-- 能量場擴散效果 -->
+<div class="energy-field">
+  <img src="img1.png" alt="圖片">
+</div>
+
+</body>
+</html>

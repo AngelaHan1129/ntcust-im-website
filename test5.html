@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>圖片載入動畫</title>
+  <style>
+    .cute-image {
+      width: 250px;
+      height: auto;
+      display: block;
+      margin: 50px auto;
+      opacity: 1;
+      transform: scale(0.5) rotate(-10deg);
+      animation: popIn 0.8s ease-out forwards;
+    }
+
+    @keyframes popIn {
+      0% {
+        opacity: 0.1;
+        transform: scale(0.5) rotate(-50deg);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.1) rotate(5deg);
+      }
+      80% {
+        transform: scale(0.95) rotate(-3deg);
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="image2.jpg" alt="圖片" class="cute-image">
+</body>
+</html>

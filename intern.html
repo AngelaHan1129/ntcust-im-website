@@ -18,7 +18,6 @@
     html,
     body {
       min-width: 0;
-      overflow-x: hidden;
     }
 
     body {
@@ -54,51 +53,6 @@
         0 -4px 4px #d4cba6,
         0 -6px 4px #fffef2,
         inset 0 0 3px 3px #d4cba6;
-    }
-
-    .unique-banner {
-      text-align: center;
-      position: relative;
-      overflow: visible;
-      min-height: 90px;
-      margin-bottom: 20px;
-    }
-
-    .creative-banner {
-      font-family: 'Segoe UI Mono', monospace;
-      font-weight: 900;
-      font-size: 1.5rem !important;
-      color: #B65D1D !important;
-      text-shadow:
-        2px 2px 0 #FFD600,
-        4px 4px 6px rgba(182, 93, 29, 0.35);
-      letter-spacing: 0.12em;
-      display: inline-flex;
-      align-items: center;
-      padding: 0.3em 0.6em;
-      background: linear-gradient(90deg, #fff9c470 70%, #EFE7DC 100%);
-      border-radius: 14px 50px 14px 50px;
-      box-shadow:
-        inset 0 -6px 12px #fff9c470,
-        0 0 12px #FBC02D;
-      user-select: none;
-      transition: all 0.3s ease;
-    }
-    .creative-banner .highlight {
-      color: #FFD600;
-      font-weight: 900;
-      font-style: italic;
-      text-shadow: 1px 1px 0 #B65D1D;
-      margin: 0 0.15em;
-      transform: scale(1.2);
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .creative-banner:hover .highlight {
-      transform: scale(1.4) rotate(6deg);
-      color: #fff176;
-      text-shadow: 0 0 6px #B65D1D;
     }
 
     .svg-wave {
@@ -148,7 +102,6 @@
       background: #fff;
       border-radius: 22px;
       box-shadow: 0 6px 38px rgba(182, 93, 29, .05);
-      padding: 36px 8vw 38px 8vw;
       position: relative;
       z-index: 1;
       width: 100%;
@@ -243,7 +196,7 @@
 
     .logo-track {
       display: flex;
-      animation: scroll 30s linear infinite;
+      animation: scroll 80s linear infinite;
       width: max-content;
     }
 
@@ -271,79 +224,10 @@
       0% {
         transform: translateX(0);
       }
+
       100% {
-        transform: translateX(-10%);
+        transform: translateX(-20%);
       }
-    }
-
-    /* 容器設定 */
-    .testimonial-carousel {
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 1rem 0;
-    }
-
-    /* testimonial 列表 */
-    .testimonial-list {
-      display: inline-flex;
-      gap: 1rem;
-      padding-left: 1rem;
-    }
-
-    /* testimonial 卡片樣式 */
-    .testimonial-card {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-      width: 300px;
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    /* 頭像圖片 */
-    .testimonial-card img {
-      width: 54px;
-      height: 54px;
-      border-radius: 999px;
-      object-fit: cover;
-      background: #fff;
-      border: 2.5px solid var(--color-primary);
-      max-width: 54px;
-      margin-bottom: 1rem;
-    }
-
-    /* 姓名與身分 */
-    .testimonial-name {
-      font-weight: bold;
-      color: var(--color-accent);
-      font-size: 1.07em;
-      margin-bottom: 4px;
-    }
-
-    /* 引言內容 */
-    .testimonial-quote {
-      color: var(--color-dark);
-      opacity: .9;
-      line-height: 1.5;
-      margin-bottom: 8px;
-      font-style: italic;
-      font-family: 'Segoe UI Mono', monospace;
-    }
-
-    /* 超連結樣式 */
-    .testimonial-link {
-      color: var(--color-primary);
-      font-size: 13px;
-      text-decoration: underline;
-      cursor: pointer;
-      font-weight: bold;
     }
 
     /* dot 導覽 */
@@ -417,6 +301,10 @@
     .testimonial-card,
     .resource-link {
       box-sizing: border-box;
+    }
+
+    .resources-list {
+      margin-top: 10px;
     }
 
     .results-list {
@@ -711,6 +599,121 @@
       max-width: 40px;
     }
 
+    .more-link {
+      text-align: end;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .more-link a {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      background-color: #FDD835;
+      color: #333;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .more-link a:hover {
+      background-color: #C56B47;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .flip-card-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .flip-card {
+      width: 300px;
+      height: 200px;
+      perspective: 1000px;
+      margin: 20px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .flip-card-front {
+      background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .flip-card-back {
+      background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+    }
+
+    .flip-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .cute-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      opacity: 1;
+      transform: scale(0.5);
+      animation: popIn 0.8s ease-out forwards;
+    }
+
+    @keyframes popIn {
+      0% {
+        opacity: 0.1;
+        transform: scale(0.5);
+      }
+
+      60% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      80% {
+        transform: scale(0.95);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+
     @keyframes blinkIcon {
       from {
         filter: brightness(0.95) drop-shadow(0 0 1px #fdd83555);
@@ -721,7 +724,6 @@
       }
     }
 
-    /* RWD */
     @media (max-width:900px) {
       .main-container {
         padding: 20px 2vw 30px 2vw;
@@ -737,7 +739,7 @@
       .testimonial-card {
         width: 80%;
       }
-      
+
       .logo-track img {
         height: 36px;
         margin: 0 15px;
@@ -751,7 +753,6 @@
 
       .testimonial-list,
       .alumni-list,
-      .resources-list,
       .employer-wall,
       .sister-list {
         flex-direction: column;
@@ -800,12 +801,9 @@
 
 <body>
   <div class="main-container">
-    <section class="unique-banner">
-      <div class="creative-banner">
-        資管系 <span class="highlight">x</span> 實習專區
-      </div>
-    </section>
-    
+    <div>
+      <img src="img7.png" alt="圖片" class="cute-image">
+    </div>
     <div class="resources-list">
       <a class="interm-btn" href="https://im.nutc.edu.tw/p/426-1063-93.php?Lang=zh-tw">實習公告</a>
       <a class="interm-btn" href="實習辦法連結">實習辦法</a>
@@ -842,14 +840,15 @@
     </table>
 
     <div class="section-title">實習課程說明</div>
-    <div style="background:var(--color-block);padding:14px;border-radius:7px;color:var(--color-dark);margin-bottom:12px;">
+    <div
+      style="background:var(--color-block);padding:14px;border-radius:7px;color:var(--color-dark);margin-bottom:12px;">
       <ul>
         <li>申請資格：本系大三、大四學生；碩士生優先。</li>
         <li>審查流程：履歷與自傳 → 書面審查 → 面試 → 正式媒合。</li>
         <li>完整規定、下載專用表格：<a href="#" style="color:var(--color-accent);text-decoration:underline;">點此查看</a></li>
       </ul>
     </div>
-    
+
     <div class="section-title">合作實習廠商</div>
     <div class="logo-carousel">
       <div class="logo-track">
@@ -956,54 +955,89 @@
 
       </div>
     </div>
+    <div class="more-link">
+      <a href="#">更多廠商...</a>
+    </div>
+
 
     <div class="section-title" style="margin-top:34px;">實習領域分布統計</div>
     <div class="stat-block">
       <svg width="145" height="145" viewBox="0 0 160 160" style="flex-shrink:0;">
-        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FFD600" stroke-width="36" stroke-dasharray="150.7 377" stroke-dashoffset="0" />
-        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#B65D1D" stroke-width="36" stroke-dasharray="56.6 377" stroke-dashoffset="-150.7" />
-        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FBC02D" stroke-width="36" stroke-dasharray="113.1 377" stroke-dashoffset="-207.3" />
-        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FFE082" stroke-width="36" stroke-dasharray="56.6 377" stroke-dashoffset="-320.4" />
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FFD600" stroke-width="36"
+          stroke-dasharray="150.7 377" stroke-dashoffset="0" />
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#B65D1D" stroke-width="36" stroke-dasharray="56.6 377"
+          stroke-dashoffset="-150.7" />
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FBC02D" stroke-width="36"
+          stroke-dasharray="113.1 377" stroke-dashoffset="-207.3" />
+        <circle r="60" cx="80" cy="80" fill="transparent" stroke="#FFE082" stroke-width="36" stroke-dasharray="56.6 377"
+          stroke-dashoffset="-320.4" />
         <circle r="36" cx="80" cy="80" fill="#fff" />
-        <text x="80" y="87" text-anchor="middle" fill="#B65D1D" font-size="22" font-weight="bold" font-family="monospace">統計</text>
+        <text x="80" y="87" text-anchor="middle" fill="#B65D1D" font-size="22" font-weight="bold"
+          font-family="monospace">統計</text>
       </svg>
       <div style="display:flex;flex-direction:column;gap:6px;font-size:16px;">
-        <div><span style="display:inline-block;width:18px;height:10px;background:#FFD600;border-radius:2px;"></span> IT/程式開發：40%</div>
-        <div><span style="display:inline-block;width:18px;height:10px;background:#B65D1D;border-radius:2px;"></span> 金融：15%</div>
-        <div><span style="display:inline-block;width:18px;height:10px;background:#FBC02D;border-radius:2px;"></span> 數據分析：30%</div>
-        <div><span style="display:inline-block;width:18px;height:10px;background:#FFE082;border-radius:2px;"></span> 設計：15%</div>
+        <div><span style="display:inline-block;width:18px;height:10px;background:#FFD600;border-radius:2px;"></span>
+          IT/程式開發：40%</div>
+        <div><span style="display:inline-block;width:18px;height:10px;background:#B65D1D;border-radius:2px;"></span>
+          金融：15%</div>
+        <div><span style="display:inline-block;width:18px;height:10px;background:#FBC02D;border-radius:2px;"></span>
+          數據分析：30%</div>
+        <div><span style="display:inline-block;width:18px;height:10px;background:#FFE082;border-radius:2px;"></span>
+          設計：15%</div>
       </div>
     </div>
 
-    <div class="section-title">實習回饋</div>
-    <div class="testimonial-carousel">
-      <div class="testimonial-list" id="testimonial-slider">
-        <div class="testimonial-card">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkf9Q5YOUjlbOpqFQJdYGBtvE9h_j0fTM2nHQlJeSpKJC4pnXxeEMnvb5m5Q_m5th1hTomLlatIU-LYwH-sxPHk5WLTvsy4w4F2a63DV5s4shKIpsmuYr_re8wkOahFpLA9_TGTkfkJIIc/s400/yumekawa_baby.png" alt="學長姐頭像">
-          <div>
-            <div class="testimonial-name">林同學｜2024 實習生</div>
-            <div class="testimonial-quote">「進入台積電實習，不只學到技術，還打開國際視野！」</div>
-            <div class="testimonial-link">#我的實習故事</div>
+    <div class="section-title">實習紀錄</div>
+
+    <div class="flip-card-container">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img1.png" alt="圖片">
+          </div>
+          <div class="flip-card-back">
+            <p>國泰人壽實習</p>
           </div>
         </div>
-        <div class="testimonial-card">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkf9Q5YOUjlbOpqFQJdYGBtvE9h_j0fTM2nHQlJeSpKJC4pnXxeEMnvb5m5Q_m5th1hTomLlatIU-LYwH-sxPHk5WLTvsy4w4F2a63DV5s4shKIpsmuYr_re8wkOahFpLA9_TGTkfkJIIc/s400/yumekawa_baby.png" alt="學長姐頭像">
-          <div>
-            <div class="testimonial-name">黃同學｜2023 校友</div>
-            <div class="testimonial-quote">「資管系實習媒合會讓我提早認識職場，找到適合自己的企業。」</div>
-            <div class="testimonial-link">#職場回饋</div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img1.png" alt="圖片">
+          </div>
+          <div class="flip-card-back">
+            <p>國泰人壽實習</p>
           </div>
         </div>
-        <div class="testimonial-card">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkf9Q5YOUjlbOpqFQJdYGBtvE9h_j0fTM2nHQlJeSpKJC4pnXxeEMnvb5m5Q_m5th1hTomLlatIU-LYwH-sxPHk5WLTvsy4w4F2a63DV5s4shKIpsmuYr_re8wkOahFpLA9_TGTkfkJIIc/s400/yumekawa_baby.png" alt="學長姐頭像">
-          <div>
-            <div class="testimonial-name">陳學姍｜2022 實習生</div>
-            <div class="testimonial-quote">「課堂理論與實習實務如拼圖接軌，讓我自信踏出資管第一步。」</div>
-            <div class="testimonial-link">#學以致用</div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img1.png" alt="圖片">
+          </div>
+          <div class="flip-card-back">
+            <p>國泰人壽實習</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img1.png" alt="圖片">
+          </div>
+          <div class="flip-card-back">
+            <p>國泰人壽實習</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </body>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector(".logo-track");
+    track.innerHTML += track.innerHTML; // 複製一次內容
+  });
+</script>
+
 </html>
